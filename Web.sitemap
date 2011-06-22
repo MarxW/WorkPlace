@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" enableLocalization="true">
+    <siteMapNode url="" title="Home"  description="Back Home" roles="*" >
+        <siteMapNode url="~/Default.aspx" title="$resources: Global, linkHomePageTitle" description="$resources: Global, linkHomePageDescription" roles="*">
+        </siteMapNode>
+        <siteMapNode url="~/Administration/Default.aspx" title="$resources: Global, linkAdministrationTitle" description="$resources: Global, linkAdministrationDescription" roles="Administrator">
+            <siteMapNode url="~/Administration/Projects.aspx" title="$resources: Global, linkAdminProjectsTitle"  description="$resources: Global, linkAdminProjectsDescription" roles="Administrator" />
+        </siteMapNode>
+        <siteMapNode url="~/About.aspx" title="$resources: Global, linkAboutTitle"  description="$resources: Global, linkAboutDescription" roles="*" />
+    </siteMapNode>
+</siteMap>

@@ -22,53 +22,54 @@ Imports System.Linq.Expressions
 Imports System.Reflection
 
 
-<Global.System.Data.Linq.Mapping.DatabaseAttribute(Name:="workplace")>  _
+<Global.System.Data.Linq.Mapping.DatabaseAttribute(Name:="workplace")> _
 Partial Public Class DataClassesDataContext
-	Inherits System.Data.Linq.DataContext
-	
-	Private Shared mappingSource As System.Data.Linq.Mapping.MappingSource = New AttributeMappingSource()
-	
-  #Region "Definitionen der Erweiterungsmethoden"
-  Partial Private Sub OnCreated()
-  End Sub
-  Partial Private Sub InsertProjects(instance As Projects)
+    Inherits System.Data.Linq.DataContext
+
+    Private Shared mappingSource As System.Data.Linq.Mapping.MappingSource = New AttributeMappingSource()
+
+#Region "Definitionen der Erweiterungsmethoden"
+    Partial Private Sub OnCreated()
     End Sub
-  Partial Private Sub UpdateProjects(instance As Projects)
+    Partial Private Sub InsertProjects(ByVal instance As Projects)
     End Sub
-  Partial Private Sub DeleteProjects(instance As Projects)
+    Partial Private Sub UpdateProjects(ByVal instance As Projects)
     End Sub
-  #End Region
-	
-	Public Sub New()
-		MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("workplaceConnectionString").ConnectionString, mappingSource)
-		OnCreated
-	End Sub
-	
-	Public Sub New(ByVal connection As String)
-		MyBase.New(connection, mappingSource)
-		OnCreated
-	End Sub
-	
-	Public Sub New(ByVal connection As System.Data.IDbConnection)
-		MyBase.New(connection, mappingSource)
-		OnCreated
-	End Sub
-	
-	Public Sub New(ByVal connection As String, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
-		MyBase.New(connection, mappingSource)
-		OnCreated
-	End Sub
-	
-	Public Sub New(ByVal connection As System.Data.IDbConnection, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
-		MyBase.New(connection, mappingSource)
-		OnCreated
-	End Sub
-	
-	Public ReadOnly Property Projects() As System.Data.Linq.Table(Of Projects)
-		Get
-			Return Me.GetTable(Of Projects)
-		End Get
-	End Property
+    Partial Private Sub DeleteProjects(ByVal instance As Projects)
+    End Sub
+#End Region
+
+    Public Sub New()
+        MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("workplaceConnectionString").ConnectionString, mappingSource)
+        OnCreated()
+    End Sub
+
+
+    Public Sub New(ByVal connection As String)
+        MyBase.New(connection, mappingSource)
+        OnCreated()
+    End Sub
+
+    Public Sub New(ByVal connection As System.Data.IDbConnection)
+        MyBase.New(connection, mappingSource)
+        OnCreated()
+    End Sub
+
+    Public Sub New(ByVal connection As String, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
+        MyBase.New(connection, mappingSource)
+        OnCreated()
+    End Sub
+
+    Public Sub New(ByVal connection As System.Data.IDbConnection, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
+        MyBase.New(connection, mappingSource)
+        OnCreated()
+    End Sub
+
+    Public ReadOnly Property Projects() As System.Data.Linq.Table(Of Projects)
+        Get
+            Return Me.GetTable(Of Projects)()
+        End Get
+    End Property
 End Class
 
 <Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Projects")>  _
@@ -329,4 +330,5 @@ Partial Public Class Projects
 			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
 		End If
 	End Sub
+
 End Class

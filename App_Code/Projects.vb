@@ -117,7 +117,7 @@ Namespace Workplace
                     .Zip = Me.Zip
                 End With
                 data.Projects.Attach(_project)
-                Dim _changeset As ChangeSet = data.GetChangeSet()
+                'Dim _changeset As ChangeSet = data.GetChangeSet()
                 data.SubmitChanges()
             End Using
         End Sub

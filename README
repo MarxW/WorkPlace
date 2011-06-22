@@ -1,1 +1,10 @@
-22.06.2010 - Kick off Workplace Project. Not quite sure which way it will be going. Starting off with the user management!
+Steps to get Things running:
+
+1.) create your database (web.config sugests 'workplace') and do a aspnet_regsql.exe on it so the default authorisation stuff will work.
+2.) add these roles with the configtool ( ~/asp.netwebadminfiles/security/roles/manageAllRoles.aspx )
+		Administrator
+		Manager
+		TeamLeader
+		Worker
+3.) create a user account with the config tool ( ~/asp.netwebadminfiles/security/users/addUser.aspx )
+4.) add the user to the Admin group.

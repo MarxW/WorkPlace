@@ -202,7 +202,7 @@ fieldset p
     margin: 2px 12px 10px 10px;
 }
 
-fieldset.login label, fieldset.register label, fieldset.changePassword label
+fieldset.login label, fieldset.register label, fieldset.changePassword label, fieldset.inputform label, span.itemLabel, label.itemLabel
 {
     display: block;
 }
@@ -223,6 +223,24 @@ input.textEntry
 {
     width: 320px;
     border: 1px solid #ccc;
+}
+
+input.textEntryMiddel 
+{
+    width: 220px;
+    border: 1px solid #ccc;    
+}
+
+input.textEntryShort 
+{
+    width: 120px;
+    border: 1px solid #ccc;    
+}
+
+input.textEntryTiny 
+{
+    width: 60px;
+    border: 1px solid #ccc;    
 }
 
 input.passwordEntry 
@@ -291,4 +309,18 @@ div.accountInfo
 {
     text-align: right;
     padding-right: 10px;
+}
+
+.aspButton 
+{
+    border: solid 1px #3A4F63;
+    background-color: #465C71;
+    text-align: center;
+    color: #CFDBE6;
+    cursor: pointer;
+}
+
+.error 
+{
+    color : Red;
 }

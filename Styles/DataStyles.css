@@ -1,0 +1,37 @@
+﻿table.infoTable 
+{
+    background-color: #4B6C9E;
+}
+
+tr.headRow, tr.footerRow
+{
+    background : none repeat scroll 0 0 #4B6C9E;
+    color : #F9F9F9;
+    text-align : left;
+}
+
+td.contentRowOne table tr 
+{
+    background : none repeat scroll 0 0 #F9F9F9;
+}
+
+td.contentRowTwo table tr 
+{
+    background : none repeat scroll 0 0 #E0E0E0;
+}
+
+tr.headRow th, td.contentRowOne table tr td, td.contentRowTwo table tr td, tr.footerRow td
+{
+    padding : 2px;
+}
+
+td.nameCell
+{
+    cursor : pointer;
+}
+
+td.smallSpace 
+{
+    width: 10px;
+}
+

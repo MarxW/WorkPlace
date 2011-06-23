@@ -117,7 +117,94 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="labelGridTitleActive.Text" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="labelGridTitleName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="labelGridTitleStreet.Text" xml:space="preserve">
+    <value>Strasse</value>
+  </data>
+  <data name="labelGridTitleTown.Text" xml:space="preserve">
+    <value>Ort / Stadt</value>
+  </data>
+  <data name="labelGridTitleZip.Text" xml:space="preserve">
+    <value>Postlietzahl</value>
+  </data>
+  <data name="labelProjectName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="literalAddNewHead.Text" xml:space="preserve">
+    <value>Neues Projekt anlegen</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Projekte Verwalten</value>
+  </data>
+  <data name="requiredProjectName.Text" xml:space="preserve">
+    <value>Projektname ist erforderlich.</value>
+  </data>
+  <data name="requiredProjectName.ToolTip" xml:space="preserve">
+    <value>Projektname ist erforderlich.</value>
+  </data>
+  <data name="buttonAdd.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="buttonCancel.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="buttonDelete.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonDelete.OnClientClick" xml:space="preserve">
+    <value>return confirm('Sind sie sicher das dieses Projekt gelöscht werden soll?')</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="buttonEdit.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonEdit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="buttonSave.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="labelEditFax.Text" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="labelEditName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelEditName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="labelEditPhone.Text" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="labelEditStreet.Text" xml:space="preserve">
+    <value>Strasse</value>
+  </data>
+  <data name="labelEditTown.Text" xml:space="preserve">
+    <value>Ort / Stadt</value>
+  </data>
+  <data name="labelEditZip.Text" xml:space="preserve">
+    <value>Postleitzahl</value>
+  </data>
+  <data name="labelEditIsActive.Text" xml:space="preserve">
+    <value>Projekt ist aktiviert</value>
+  </data>
+  <data name="labelEditLicence.Text" xml:space="preserve">
+    <value>Lizenz</value>
   </data>
 </root>

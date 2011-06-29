@@ -117,7 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="buttonAdd.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="buttonDelete.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonDelete.OnClientClick" xml:space="preserve">
+    <value>return confirm('Sind sie sicher das dieses Lizenze gelöscht werden soll?')</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="buttonEdit.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonEdit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="labelGridTitleMaxTeams.Text" xml:space="preserve">
+    <value>Max Teams</value>
+  </data>
+  <data name="labelGridTitleMaxUsers.Text" xml:space="preserve">
+    <value>Max Anwender</value>
+  </data>
+  <data name="labelGridTitleName.Text" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="labelGridTitlePrice.Text" xml:space="preserve">
+    <value>€ / Monat</value>
+  </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Lizenzen verwalten</value>
+  </data>
+  <data name="requiredLicenceName.Text" xml:space="preserve">
+    <value>Lizenzname ist erforderlich.</value>
+  </data>
+  <data name="requiredLicenceName.ToolTip" xml:space="preserve">
+    <value>Lizenzname ist erforderlich.</value>
   </data>
 </root>

@@ -162,7 +162,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 Dim _licence As New Licences
                 With _licence
-                    .licenceID = l.licenceID
+                    .licenceID = Guid.NewGuid
                     .MaxTeams = l.MaxTeams
                     .MaxUsers = l.MaxUsers
                     .Name = l.Name

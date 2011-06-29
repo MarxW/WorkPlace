@@ -22,54 +22,65 @@ Imports System.Linq.Expressions
 Imports System.Reflection
 
 
-<Global.System.Data.Linq.Mapping.DatabaseAttribute(Name:="workplace")> _
+<Global.System.Data.Linq.Mapping.DatabaseAttribute(Name:="workplace")>  _
 Partial Public Class DataClassesDataContext
-    Inherits System.Data.Linq.DataContext
-
-    Private Shared mappingSource As System.Data.Linq.Mapping.MappingSource = New AttributeMappingSource()
-
-#Region "Definitionen der Erweiterungsmethoden"
-    Partial Private Sub OnCreated()
+	Inherits System.Data.Linq.DataContext
+	
+	Private Shared mappingSource As System.Data.Linq.Mapping.MappingSource = New AttributeMappingSource()
+	
+  #Region "Definitionen der Erweiterungsmethoden"
+  Partial Private Sub OnCreated()
+  End Sub
+  Partial Private Sub InsertProjects(instance As Projects)
     End Sub
-    Partial Private Sub InsertProjects(ByVal instance As Projects)
+  Partial Private Sub UpdateProjects(instance As Projects)
     End Sub
-    Partial Private Sub UpdateProjects(ByVal instance As Projects)
+  Partial Private Sub DeleteProjects(instance As Projects)
     End Sub
-    Partial Private Sub DeleteProjects(ByVal instance As Projects)
+  Partial Private Sub InsertLicences(instance As Licences)
     End Sub
-#End Region
-
-    Public Sub New()
-        MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("workplaceConnectionString").ConnectionString, mappingSource)
-        OnCreated()
+  Partial Private Sub UpdateLicences(instance As Licences)
     End Sub
-
-
-    Public Sub New(ByVal connection As String)
-        MyBase.New(connection, mappingSource)
-        OnCreated()
+  Partial Private Sub DeleteLicences(instance As Licences)
     End Sub
-
-    Public Sub New(ByVal connection As System.Data.IDbConnection)
-        MyBase.New(connection, mappingSource)
-        OnCreated()
-    End Sub
-
-    Public Sub New(ByVal connection As String, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
-        MyBase.New(connection, mappingSource)
-        OnCreated()
-    End Sub
-
-    Public Sub New(ByVal connection As System.Data.IDbConnection, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
-        MyBase.New(connection, mappingSource)
-        OnCreated()
-    End Sub
-
-    Public ReadOnly Property Projects() As System.Data.Linq.Table(Of Projects)
-        Get
-            Return Me.GetTable(Of Projects)()
-        End Get
-    End Property
+  #End Region
+	
+	Public Sub New()
+		MyBase.New(Global.System.Configuration.ConfigurationManager.ConnectionStrings("workplaceConnectionString").ConnectionString, mappingSource)
+		OnCreated
+	End Sub
+	
+	Public Sub New(ByVal connection As String)
+		MyBase.New(connection, mappingSource)
+		OnCreated
+	End Sub
+	
+	Public Sub New(ByVal connection As System.Data.IDbConnection)
+		MyBase.New(connection, mappingSource)
+		OnCreated
+	End Sub
+	
+	Public Sub New(ByVal connection As String, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
+		MyBase.New(connection, mappingSource)
+		OnCreated
+	End Sub
+	
+	Public Sub New(ByVal connection As System.Data.IDbConnection, ByVal mappingSource As System.Data.Linq.Mapping.MappingSource)
+		MyBase.New(connection, mappingSource)
+		OnCreated
+	End Sub
+	
+	Public ReadOnly Property Projects() As System.Data.Linq.Table(Of Projects)
+		Get
+			Return Me.GetTable(Of Projects)
+		End Get
+	End Property
+	
+	Public ReadOnly Property Licences() As System.Data.Linq.Table(Of Licences)
+		Get
+			Return Me.GetTable(Of Licences)
+		End Get
+	End Property
 End Class
 
 <Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Projects")>  _
@@ -330,5 +341,154 @@ Partial Public Class Projects
 			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
 		End If
 	End Sub
+End Class
 
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Licences")>  _
+Partial Public Class Licences
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _licenceID As System.Guid
+	
+	Private _Name As String
+	
+	Private _MaxTeams As System.Nullable(Of Integer)
+	
+	Private _MaxUsers As System.Nullable(Of Integer)
+	
+	Private _NettoPrice As System.Nullable(Of Decimal)
+	
+    #Region "Definitionen der Erweiterungsmethoden"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnlicenceIDChanging(value As System.Guid)
+    End Sub
+    Partial Private Sub OnlicenceIDChanged()
+    End Sub
+    Partial Private Sub OnNameChanging(value As String)
+    End Sub
+    Partial Private Sub OnNameChanged()
+    End Sub
+    Partial Private Sub OnMaxTeamsChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnMaxTeamsChanged()
+    End Sub
+    Partial Private Sub OnMaxUsersChanging(value As System.Nullable(Of Integer))
+    End Sub
+    Partial Private Sub OnMaxUsersChanged()
+    End Sub
+    Partial Private Sub OnNettoPriceChanging(value As System.Nullable(Of Decimal))
+    End Sub
+    Partial Private Sub OnNettoPriceChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_licenceID", DbType:="UniqueIdentifier NOT NULL", IsPrimaryKey:=true)>  _
+	Public Property licenceID() As System.Guid
+		Get
+			Return Me._licenceID
+		End Get
+		Set
+			If ((Me._licenceID = value)  _
+						= false) Then
+				Me.OnlicenceIDChanging(value)
+				Me.SendPropertyChanging
+				Me._licenceID = value
+				Me.SendPropertyChanged("licenceID")
+				Me.OnlicenceIDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Name", DbType:="NVarChar(50)")>  _
+	Public Property Name() As String
+		Get
+			Return Me._Name
+		End Get
+		Set
+			If (String.Equals(Me._Name, value) = false) Then
+				Me.OnNameChanging(value)
+				Me.SendPropertyChanging
+				Me._Name = value
+				Me.SendPropertyChanged("Name")
+				Me.OnNameChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MaxTeams", DbType:="Int")>  _
+	Public Property MaxTeams() As System.Nullable(Of Integer)
+		Get
+			Return Me._MaxTeams
+		End Get
+		Set
+			If (Me._MaxTeams.Equals(value) = false) Then
+				Me.OnMaxTeamsChanging(value)
+				Me.SendPropertyChanging
+				Me._MaxTeams = value
+				Me.SendPropertyChanged("MaxTeams")
+				Me.OnMaxTeamsChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_MaxUsers", DbType:="Int")>  _
+	Public Property MaxUsers() As System.Nullable(Of Integer)
+		Get
+			Return Me._MaxUsers
+		End Get
+		Set
+			If (Me._MaxUsers.Equals(value) = false) Then
+				Me.OnMaxUsersChanging(value)
+				Me.SendPropertyChanging
+				Me._MaxUsers = value
+				Me.SendPropertyChanged("MaxUsers")
+				Me.OnMaxUsersChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_NettoPrice", DbType:="Decimal(18,2)")>  _
+	Public Property NettoPrice() As System.Nullable(Of Decimal)
+		Get
+			Return Me._NettoPrice
+		End Get
+		Set
+			If (Me._NettoPrice.Equals(value) = false) Then
+				Me.OnNettoPriceChanging(value)
+				Me.SendPropertyChanging
+				Me._NettoPrice = value
+				Me.SendPropertyChanged("NettoPrice")
+				Me.OnNettoPriceChanged
+			End If
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
 End Class

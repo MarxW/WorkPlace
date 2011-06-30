@@ -159,4 +159,16 @@
   <data name="requiredLicenceName.ToolTip" xml:space="preserve">
     <value>Lizenzname ist erforderlich.</value>
   </data>
+  <data name="buttonCancel.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="buttonSave.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
 </root>

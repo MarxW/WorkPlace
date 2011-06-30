@@ -71,7 +71,7 @@
                         <td  width="60px"></td>
                     </tr>
                     <tr class="contentRow">
-                        <td width="190px">
+                        <td width="190px" style="vertical-align: top">
                             <asp:Button ID="buttonSave" runat="server" meta:resourcekey="buttonSave" CommandName="Update" CausesValidation="False" />
                             <asp:Button ID="buttonCancel" runat="server" meta:resourcekey="buttonCancel" CommandName="Cancel" CausesValidation="False" />
                         </td>
@@ -114,7 +114,8 @@
                                 <tr>
                                     <td colspan="3">
                                         <asp:Label ID="labelEditLicence" meta:resourcekey="labelEditLicence" runat="server" AssociatedControlID="dropdownEditLicence" CssClass="itemLabel" />
-                                        <asp:DropDownList runat="server" ID="dropdownEditLicence"></asp:DropDownList>
+                                        <asp:ObjectDataSource ID="datasourceLicences" runat="server" DataObjectTypeName="Workplace.Licence" SelectMethod="getAllLicences" TypeName="Workplace.Licence" />
+                                        <asp:DropDownList runat="server" ID="dropdownEditLicence" DataTextField="Name" DataSourceID="datasourceLicences" DataValueField="licenceID" SelectedValue='<%#Eval("LicenceID") %>' ></asp:DropDownList>
                                     </td>
                                 </tr>
                                 <tr>

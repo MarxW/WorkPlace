@@ -33,4 +33,31 @@ Partial Class Administration_Licences
         datasourceLicences.DataBind()
         datalistLicences.DataBind()
     End Sub
+
+    Protected Sub datalistLicences_EditCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistLicences.EditCommand
+        datalistLicences.EditItemIndex = e.Item.ItemIndex
+        datalistLicences.DataBind()
+    End Sub
+
+    Protected Sub datalistLicences_CancelCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistLicences.CancelCommand
+        datalistLicences.EditItemIndex = -1
+        datalistLicences.DataBind()
+    End Sub
+
+    Protected Sub datalistLicences_UpdateCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistLicences.UpdateCommand
+        Dim licenceID As Guid = CType(datalistLicences.DataKeys(e.Item.ItemIndex), Guid)
+
+        Dim _licence As Workplace.Licence = Workplace.Licence.getLicenceByID(licenceID)
+        With _licence
+            .Name = DirectCast(e.Item.FindControl("textboxName"), TextBox).Text.Trim()
+            .MaxTeams = DirectCast(e.Item.FindControl("textboxMaxTeams"), TextBox).Text.Trim().toInteger()
+            .MaxUsers = DirectCast(e.Item.FindControl("textboxMaxUsers"), TextBox).Text.Trim().toInteger()
+            .NettoPrice = DirectCast(e.Item.FindControl("textboxNettoPrice"), TextBox).Text.Trim().toDecimal()
+        End With
+        Workplace.Licence.updateLicence(_licence)
+        datalistLicences.EditItemIndex = -1
+        datalistLicences.DataBind()
+    End Sub
+    
+
 End Class

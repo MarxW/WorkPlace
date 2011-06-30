@@ -51,6 +51,35 @@
                     </tr>
                 </table>
             </ItemTemplate>
+            <EditItemTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="contentRow">
+                        <td width="190px" style="text-align:right;"></td>
+                        <td width="150px"></td>
+                        <td width="150px"></td>
+                        <td  width="150px"></td>
+                        <td  width="80px"></td>
+                    </tr>
+                    <tr class="contentRow">
+                        <td width="190px">
+                            <asp:Button ID="buttonSave" runat="server" meta:resourcekey="buttonSave" CommandName="Update" CausesValidation="False" />
+                            <asp:Button ID="buttonCancel" runat="server" meta:resourcekey="buttonCancel" CommandName="Cancel" CausesValidation="False" />
+                        </td>
+                        <td width="150px">
+                            <asp:TextBox Width="145px" ID="textboxName" runat="server" Text='<%# Eval("Name") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:TextBox Width="145px" ID="textboxMaxTeams" runat="server" Text='<%# Eval("MaxTeams") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:TextBox Width="145px" ID="textboxMaxUsers" runat="server" Text='<%# Eval("MaxUsers") %>' />
+                        </td>
+                        <td  width="80px" style="text-align:right;">
+                            <asp:TextBox Width="75px" ID="textboxNettoPrice" runat="server" Text='<%# Eval("NettoPrice") %>' />
+                        </td>
+                    </tr>
+                </table>
+            </EditItemTemplate>
             <FooterTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="footerRow">

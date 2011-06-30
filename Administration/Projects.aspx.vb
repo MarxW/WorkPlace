@@ -53,7 +53,9 @@ Partial Class Administration_Projects
             .isActive = DirectCast(e.Item.FindControl("checkboxEditIsActive"), CheckBox).Checked
             .licenceID = Guid.Parse(DirectCast(e.Item.FindControl("dropdownEditLicence"), DropDownList).SelectedValue)
             .Phone = DirectCast(e.Item.FindControl("textboxEditPhone"), TextBox).Text.Trim
-
+            .Street = DirectCast(e.Item.FindControl("textboxEditStreet"), TextBox).Text.Trim
+            .Town = DirectCast(e.Item.FindControl("textboxEditTown"), TextBox).Text.Trim
+            .Zip = DirectCast(e.Item.FindControl("textboxEditZip"), TextBox).Text.Trim
         End With
         Workplace.Project.updateProject(project)
         datalistProjects.EditItemIndex = -1

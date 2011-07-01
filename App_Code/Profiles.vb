@@ -27,6 +27,75 @@ Namespace Workplace
     Public Class Profile
         Inherits ProfileDTO
 
+        ''' <summary>
+        ''' Load Profiles with Pageing ability
+        ''' </summary>
+        ''' <param name="startIndex">Index to start</param>
+        ''' <param name="maxRows">Number of rows</param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function getAllProfiles(ByVal startIndex As Integer, ByVal maxRows As Integer) As List(Of Profile)
+            Dim list As List(Of Profile)
+            Using data As New DataClassesDataContext
+                list = (From p In data.Profiles Order By p.LastName, p.FirstName
+                       Select New Profile With {
+                           .Birthdate = p.Birthdate,
+                           .EndDate = p.EndDate,
+                           .FirstName = p.FirstName,
+                           .Holidays = p.Holidays,
+                           .Image = p.Image,
+                           .LastName = p.LastName,
+                           .Mobile = p.Mobile,
+                           .Notes = p.Notes,
+                           .Phone = p.phone,
+                           .Qualification = p.Qualification,
+                           .Salary = p.Salary,
+                           .StartDate = p.StartDate,
+                           .Street = p.Street,
+                           .TaxClass = p.TaxClass,
+                           .Town = p.town,
+                           .userID = p.userID,
+                           .WeeklyHours = p.WeeklyHours,
+                           .Zip = p.Zip
+                       }).Skip(startIndex).Take(maxRows).Cast(Of Profile)().ToList()
+            End Using
+            Return list
+        End Function
+
+        ''' <summary>
+        ''' Load Profiles
+        ''' </summary>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function getAllProfiles() As List(Of Profile)
+            Dim list As List(Of Profile)
+            Using data As New DataClassesDataContext
+                list = (From p In data.Profiles Order By p.LastName, p.FirstName
+                       Select New Profile With {
+                           .Birthdate = p.Birthdate,
+                           .EndDate = p.EndDate,
+                           .FirstName = p.FirstName,
+                           .Holidays = p.Holidays,
+                           .Image = p.Image,
+                           .LastName = p.LastName,
+                           .Mobile = p.Mobile,
+                           .Notes = p.Notes,
+                           .Phone = p.phone,
+                           .Qualification = p.Qualification,
+                           .Salary = p.Salary,
+                           .StartDate = p.StartDate,
+                           .Street = p.Street,
+                           .TaxClass = p.TaxClass,
+                           .Town = p.town,
+                           .userID = p.userID,
+                           .WeeklyHours = p.WeeklyHours,
+                           .Zip = p.Zip
+                       }).Cast(Of Profile)().ToList()
+            End Using
+            Return list
+        End Function
+
+
 
     End Class
 

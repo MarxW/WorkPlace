@@ -513,6 +513,8 @@ Partial Public Class Profiles
 	
 	Private _userID As System.Guid
 	
+	Private _projectID As System.Nullable(Of System.Guid)
+	
 	Private _FirstName As String
 	
 	Private _LastName As String
@@ -557,6 +559,10 @@ Partial Public Class Profiles
     Partial Private Sub OnuserIDChanging(value As System.Guid)
     End Sub
     Partial Private Sub OnuserIDChanged()
+    End Sub
+    Partial Private Sub OnprojectIDChanging(value As System.Nullable(Of System.Guid))
+    End Sub
+    Partial Private Sub OnprojectIDChanged()
     End Sub
     Partial Private Sub OnFirstNameChanging(value As String)
     End Sub
@@ -646,6 +652,22 @@ Partial Public Class Profiles
 				Me._userID = value
 				Me.SendPropertyChanged("userID")
 				Me.OnuserIDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_projectID", DbType:="UniqueIdentifier")>  _
+	Public Property projectID() As System.Nullable(Of System.Guid)
+		Get
+			Return Me._projectID
+		End Get
+		Set
+			If (Me._projectID.Equals(value) = false) Then
+				Me.OnprojectIDChanging(value)
+				Me.SendPropertyChanging
+				Me._projectID = value
+				Me.SendPropertyChanged("projectID")
+				Me.OnprojectIDChanged
 			End If
 		End Set
 	End Property

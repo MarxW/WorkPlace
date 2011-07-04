@@ -13,6 +13,7 @@ GO
 CREATE TABLE dbo.Profiles
 	(
 	userID uniqueidentifier NOT NULL,
+	projectID uniqueidentifier NULL,
 	FirstName nvarchar(50) NULL,
 	LastName nvarchar(50) NULL,
 	Birthdate date NULL,

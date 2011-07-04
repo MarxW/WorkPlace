@@ -141,7 +141,7 @@ Namespace Workplace
         End Sub
 
         ''' <summary>
-        ''' Get the number of Projects
+        ''' Get the number of Licences
         ''' </summary>
         ''' <returns></returns>
         ''' <remarks></remarks>

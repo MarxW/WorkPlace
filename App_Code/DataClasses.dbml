@@ -26,6 +26,7 @@
   <Table Name="dbo.Profiles" Member="Profiles">
     <Type Name="Profiles">
       <Column Name="userID" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="projectID" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="FirstName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="LastName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Birthdate" Type="System.DateTime" DbType="Date" CanBeNull="true" />

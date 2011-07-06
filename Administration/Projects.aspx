@@ -9,10 +9,8 @@
             DataObjectTypeName="Workplace.Project" DeleteMethod="deleteProject" 
             InsertMethod="addNewProject" SelectMethod="getAllProjects" 
             TypeName="Workplace.Project" UpdateMethod="updateProject"></asp:ObjectDataSource>
-        <asp:DataList ID="datalistProjects" runat="server" 
-            DataSourceID="dataSourceProjects" ItemStyle-CssClass="contentRowOne" 
-            AlternatingItemStyle-CssClass="contentRowTwo" RepeatLayout="Table" 
-            DataKeyField="projectID">
+        <asp:DataList ID="datalistProjects" runat="server" DataSourceID="dataSourceProjects" ItemStyle-CssClass="contentRowOne" 
+            AlternatingItemStyle-CssClass="contentRowTwo" RepeatLayout="Table" DataKeyField="projectID">
             <HeaderTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="headRow">

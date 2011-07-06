@@ -123,4 +123,7 @@
   <data name="PageTitle" xml:space="preserve">
     <value>Administrier Users</value>
   </data>
+  <data name="labelGridTitleLastName.Text" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
 </root>

@@ -5,6 +5,7 @@ Namespace Workplace
 
     Public Class ProfileDTO
         Public Property userID As Guid
+        Public Property projectID As Guid
         Public Property FirstName As String
         Public Property LastName As String
         Public Property Birthdate As Date
@@ -39,6 +40,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 list = (From p In data.Profiles Order By p.LastName, p.FirstName
                        Select New Profile With {
+                           .projectID = p.projectID,
                            .Birthdate = p.Birthdate,
                            .EndDate = p.EndDate,
                            .FirstName = p.FirstName,
@@ -72,6 +74,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 list = (From p In data.Profiles Order By p.LastName, p.FirstName
                        Select New Profile With {
+                           .projectID = p.projectID,
                            .Birthdate = p.Birthdate,
                            .EndDate = p.EndDate,
                            .FirstName = p.FirstName,
@@ -106,6 +109,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 list = (From p In data.Profiles Order By p.LastName, p.FirstName
                        Select New Profile With {
+                           .projectID = projectID,
                            .Birthdate = p.Birthdate,
                            .EndDate = p.EndDate,
                            .FirstName = p.FirstName,
@@ -123,7 +127,7 @@ Namespace Workplace
                            .Town = p.town,
                            .userID = p.userID,
                            .WeeklyHours = p.WeeklyHours,
-                           .Zip = p.Zip
+                .Zip = p.Zip
                        }).Cast(Of Profile)().ToList()
             End Using
             Return list
@@ -140,6 +144,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 _profile = (From p In data.Profiles Where p.userID = userID
                             Select New Profile With {
+                                .projectID = p.projectID,
                                 .Birthdate = p.Birthdate,
                                 .EndDate = p.EndDate,
                                 .FirstName = p.FirstName,
@@ -182,6 +187,7 @@ Namespace Workplace
             Using data As New DataClassesDataContext
                 Dim _profile As Profiles = (From org In data.Profiles Where org.userID = p.userID).SingleOrDefault()
                 With _profile
+                    .projectID = p.projectID
                     .Birthdate = p.Birthdate
                     .EndDate = p.EndDate
                     .FirstName = p.FirstName
@@ -259,9 +265,13 @@ Namespace Workplace
         ''' <remarks></remarks>
         Public Shared Sub addNewProfileWithUserID(ByVal p As Profile)
             Using data As New DataClassesDataContext
+                If Guid.Empty = p.userID Then
+                    p.userID = Guid.NewGuid()
+                End If
                 Dim _profile As New Profiles
                 With _profile
                     With _profile
+                        .projectID = p.projectID
                         .userID = p.userID
                         .Birthdate = p.Birthdate
                         .EndDate = p.EndDate

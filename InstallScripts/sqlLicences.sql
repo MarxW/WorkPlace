@@ -38,3 +38,18 @@ GO
 ALTER TABLE dbo.Licences SET (LOCK_ESCALATION = TABLE)
 GO
 COMMIT
+
+INSERT INTO [workplace].[dbo].[Licences]
+           ([licenceID]
+           ,[Name]
+           ,[MaxTeams]
+           ,[MaxUsers]
+           ,[NettoPrice])
+     VALUES
+           ('00000000-0000-0000-0000-000000000000',
+           'Keine',
+           0,
+           0,
+           0)
+GO
+COMMIT

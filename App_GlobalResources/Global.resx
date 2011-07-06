@@ -147,4 +147,10 @@
   <data name="linkAdminLicenceTitle" xml:space="preserve">
     <value>Lizenzen</value>
   </data>
+  <data name="linkAdminUsersDescription" xml:space="preserve">
+    <value>Benutzer verwalten</value>
+  </data>
+  <data name="linkAdminUsersTitle" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
 </root>

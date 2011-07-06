@@ -6,6 +6,7 @@
         <siteMapNode url="~/Administration/Default.aspx" title="$resources: Global, linkAdministrationTitle" description="$resources: Global, linkAdministrationDescription" roles="Administrator">
           <siteMapNode url="~/Administration/Licences.aspx" title="$resources: Global, linkAdminLicenceTitle"  description="$resources: Global, linkAdminLicenceDescription" roles="Administrator" />
           <siteMapNode url="~/Administration/Projects.aspx" title="$resources: Global, linkAdminProjectsTitle"  description="$resources: Global, linkAdminProjectsDescription" roles="Administrator" />
+          <siteMapNode url="~/Administration/Users.aspx" title="$resources: Global, linkAdminUsersTitle"  description="$resources: Global, linkAdminUsersDescription" roles="Administrator" />
         </siteMapNode>
         <siteMapNode url="~/About.aspx" title="$resources: Global, linkAboutTitle"  description="$resources: Global, linkAboutDescription" roles="*" />
     </siteMapNode>

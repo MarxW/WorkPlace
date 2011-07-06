@@ -8,3 +8,4 @@ Steps to get Things running:
 		Worker
 3.) create a user account with the config tool ( ~/asp.netwebadminfiles/security/users/addUser.aspx )
 4.) add the user to the Admin group.
+5.) run sql scripts found in the folder: ~/InstallScripts

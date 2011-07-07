@@ -126,4 +126,40 @@
   <data name="labelGridTitleLastName.Text" xml:space="preserve">
     <value>Nachname</value>
   </data>
+  <data name="buttonAdd.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="labelGridTitleFirstName.Text" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="labelGridTitleMobile.Text" xml:space="preserve">
+    <value>Rufnummer</value>
+  </data>
+  <data name="labelGridTitleQualification.Text" xml:space="preserve">
+    <value>Qualifikation</value>
+  </data>
+  <data name="labelGridTitleWeeklyHours.Text" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="requiredUserFirstName.ErrorMessage" xml:space="preserve">
+    <value>Vorname ist erforderlich.</value>
+  </data>
+  <data name="requiredUserFirstName.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="requiredUserFirstName.ToolTip" xml:space="preserve">
+    <value>Vorname ist erforderlich.</value>
+  </data>
+  <data name="requiredUserLastName.ErrorMessage" xml:space="preserve">
+    <value>Nachname ist erforderlich.</value>
+  </data>
+  <data name="requiredUserLastName.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="requiredUserLastName.ToolTip" xml:space="preserve">
+    <value>Nachname ist erforderlich.</value>
+  </data>
 </root>

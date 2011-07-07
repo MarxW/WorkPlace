@@ -52,4 +52,4 @@ INSERT INTO [workplace].[dbo].[Licences]
            0,
            0)
 GO
-COMMIT
+

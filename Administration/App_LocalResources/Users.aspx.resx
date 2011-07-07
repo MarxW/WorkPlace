@@ -136,10 +136,10 @@
     <value>Vorname</value>
   </data>
   <data name="labelGridTitleMobile.Text" xml:space="preserve">
-    <value>Rufnummer</value>
+    <value>Mobile</value>
   </data>
-  <data name="labelGridTitleQualification.Text" xml:space="preserve">
-    <value>Qualifikation</value>
+  <data name="labelGridTitlePhone.Text" xml:space="preserve">
+    <value>Festnetz</value>
   </data>
   <data name="labelGridTitleWeeklyHours.Text" xml:space="preserve">
     <value>Stunden</value>
@@ -161,5 +161,71 @@
   </data>
   <data name="requiredUserLastName.ToolTip" xml:space="preserve">
     <value>Nachname ist erforderlich.</value>
+  </data>
+  <data name="labelAddEmail.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddEmail.Text" xml:space="preserve">
+    <value>E-Mail</value>
+  </data>
+  <data name="labelAddFirstName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddFirstName.Text" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="labelAddHolidays.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddHolidays.Text" xml:space="preserve">
+    <value>Urlaub / Jahr</value>
+  </data>
+  <data name="labelAddHours.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddHours.Text" xml:space="preserve">
+    <value>Stunden / Woche</value>
+  </data>
+  <data name="labelAddLastName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddLastName.Text" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="labelAddMobile.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddMobile.Text" xml:space="preserve">
+    <value>Mobile</value>
+  </data>
+  <data name="labelAddPhone.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddPhone.Text" xml:space="preserve">
+    <value>Festnetz</value>
+  </data>
+  <data name="labelAddQualification.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddQualification.Text" xml:space="preserve">
+    <value>Qualifikation</value>
+  </data>
+  <data name="labelAddStreet.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddStreet.Text" xml:space="preserve">
+    <value>Strasse</value>
+  </data>
+  <data name="labelAddTown.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddTown.Text" xml:space="preserve">
+    <value>Stadt</value>
+  </data>
+  <data name="labelAddZip.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddZip.Text" xml:space="preserve">
+    <value>Postleitzahl</value>
   </data>
 </root>

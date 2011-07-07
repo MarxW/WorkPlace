@@ -31,7 +31,7 @@
                             <asp:Label runat="server" ID="labelGridTitleFirstName" meta:resourcekey="labelGridTitleFirstName" />
                         </th>
                         <th width="150px">
-                            <asp:Label runat="server" ID="labelGridTitleQualification" meta:resourcekey="labelGridTitleQualification" />
+                            <asp:Label runat="server" ID="labelGridTitlePhone" meta:resourcekey="labelGridTitlePhone" />
                         </th>
                         <th width="150px" >
                             <asp:Label runat="server" ID="labelGridTitleMobile" meta:resourcekey="labelGridTitleMobile" />
@@ -56,7 +56,7 @@
                             <asp:Label ID="labelGridFirstName" runat="server" Text='<%# Eval("FirstName") %>' />
                         </td>
                         <td  width="150px">
-                            <asp:Label ID="labelGridQualification" runat="server" Text='<%# Eval("Qualification") %>' />
+                            <asp:Label ID="labelGridQualification" runat="server" Text='<%# Eval("Phone") %>' />
                         </td>
                         <td  width="150px">
                             <asp:Label ID="labelGridMobile" runat="server" Text='<%# Eval("Mobile") %>' />
@@ -74,35 +74,120 @@
                     </tr>
                     <tr class="footerRow">
                         <td width="190px" style="text-align:right;">
-                            <asp:Button ID="buttonAdd" runat="server" CommandName="Insert" meta:resourcekey="buttonAdd" ValidationGroup="addUserValidationGroup"/>
+                            <asp:Button ID="buttonAdd" OnClientClick="showAddUserForm();return false;"  runat="server" CommandName="Insert" meta:resourcekey="buttonAdd" />
                         </td>
                         <td width="150px">
-                            <asp:TextBox Width="140px" ID="textboxAddLastName" runat="server" Text="" /><asp:RequiredFieldValidator ID="requiredUserLastName" meta:resourcekey="requiredUserLastName" runat="server" ControlToValidate="textboxAddLastName" CssClass="error" ValidationGroup="addUserValidationGroup" />
                         </td>
                         <td width="150px">
-                            <asp:TextBox Width="140px" ID="textboxAddFirstName" runat="server" Text="" /><asp:RequiredFieldValidator ID="requiredUserFirstName" meta:resourcekey="requiredUserFirstName" runat="server" ControlToValidate="textboxAddFirstName" CssClass="error" ValidationGroup="addUserValidationGroup" />
                         </td>
                         <td  width="150px">
-                            <asp:TextBox Width="140px" ID="textboxAddQualification" runat="server" Text="" />
                         </td>
                         <td  width="150px">
-                            <asp:TextBox Width="140px" ID="textboxAddMobile" runat="server" Text="" />
                         </td>
                         <td  width="60px" style="text-align:center;">
-                            <asp:TextBox Width="50px" ID="textboxAddHours" runat="server" Text="" />
                         </td>
                     </tr>
                     <tr class="footerRow">
-                        <td colspan="6" style="text-align:center;">
-                            <asp:ValidationSummary ID="validationsummaryAddUser" runat="server" CssClass="error" 
-                                    ValidationGroup="addUserValidationGroup" DisplayMode="List"/>
-                            <asp:Label runat="server" ID="labelInsertError" CssClass="error"></asp:Label>
-                        </td>
+                        <td colspan="6" style="text-align:center;"></td>
                     </tr>
                 </table>
             </FooterTemplate>
         </asp:DataList>
     </div>
-    <div id="overlay" class="modal"></div>
+    <div id="dialogWrap" style="display: block; z-index: 1004; outline: 0px none; position: absolute; height: auto; 
+        width: 400px; " class="ui-dialog ui-widget ui-widget-content ui-corner-all" tabindex="-1" role="dialog" aria-labelledby="ui-dialog-title-dialog-modal">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span class="ui-dialog-title" id="ui-dialog-title-dialog-modal">Basic modal dialog</span>
+            <a id="closeAddUserDialog" href="#" class="ui-dialog-titlebar-close ui-corner-all" role="button">
+                <span class="ui-icon ui-icon-closethick">close</span>
+            </a>
+        </div>
+        <div id="dialogModal" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; height: 300px;">
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        <asp:label id="labelAddFirstName" meta:resourcekey="labelAddFirstName" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddFirstName" runat="server" Text="" />
+                        <asp:RequiredFieldValidator ID="requiredUserFirstName" meta:resourcekey="requiredUserFirstName" runat="server" ControlToValidate="textboxAddFirstName" CssClass="error" ValidationGroup="addUserValidationGroup" />
+                    </td>
+                    <td style="width: 10px;"></td>
+                    <td>
+                        <asp:label id="labelAddLastName" meta:resourcekey="labelAddLastName" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddLastName" runat="server" Text="" />
+                        <asp:RequiredFieldValidator ID="requiredUserLastName" meta:resourcekey="requiredUserLastName" runat="server" ControlToValidate="textboxAddLastName" CssClass="error" ValidationGroup="addUserValidationGroup" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <asp:label id="labelAddEmail" meta:resourcekey="labelAddEmail" runat="server" />
+                        <asp:TextBox Width="310px" ID="textboxAddEmail" runat="server" Text="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <asp:label id="labelAddQualification" meta:resourcekey="labelAddQualification" runat="server" />
+                        <asp:TextBox Width="310px" ID="textboxAddQualification" TextMode="MultiLine" Height="40px" runat="server" Text="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <asp:label id="labelAddStreet" meta:resourcekey="labelAddStreet" runat="server" />
+                        <asp:TextBox Width="310px" ID="textboxAddStreet" runat="server" Text="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:label id="labelAddTown" meta:resourcekey="labelAddTown" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddTown" runat="server" Text="" />
+                    </td>
+                    <td style="width: 10px;"></td>
+                    <td>
+                        <asp:label id="labelAddZip" meta:resourcekey="labelAddZip" runat="server" />
+                        <asp:TextBox Width="80px" ID="textboxAddZip" runat="server" Text="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:label id="labelAddMobile" meta:resourcekey="labelAddMobile" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddMobile" runat="server" Text="" />
+                    </td>
+                    <td style="width: 10px;"></td>
+                    <td>
+                        <asp:label id="labelAddPhone" meta:resourcekey="labelAddPhone" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddPhone" runat="server" Text="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:label id="labelAddHours" meta:resourcekey="labelAddHours" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddHours" runat="server" Text="" />
+                    </td>
+                    <td style="width: 10px;"></td>
+                    <td>
+                        <asp:label id="labelAddHolidays" meta:resourcekey="labelAddHolidays" runat="server" />
+                        <asp:TextBox Width="140px" ID="textboxAddHolidays" runat="server" Text="" />
+                    </td>
+                </tr>
+            </table>
+            <asp:ValidationSummary ID="validationsummaryAddUser" runat="server" CssClass="error" 
+                                    ValidationGroup="addUserValidationGroup" DisplayMode="List"/>
+                            <asp:Label runat="server" ID="labelInsertError" CssClass="error"></asp:Label>
+        </div>
+    </div>
+    <div id="overlay" class="ui-widget-overlay" style="z-index: 1003;"></div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#closeAddUserDialog').bind('click', function () {
+                $('#overlay').hide();
+                $('#dialogWrap').hide();
+            });
+            $('#dialogWrap').realcenter();
+        });
+        function showAddUserForm() {
+            $('#overlay').show();
+            $('#dialogWrap').show();
+            $('#dialogWrap').realcenter();
+        }
+    </script>
 </asp:Content>
 

@@ -6,7 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="Scripts/jquery-1.6.2.min.js" ></script>
+    <link type="text/css" href="~/Styles/ui_start/jquery-ui-1.8.14.custom.css" rel="stylesheet" />
+    <%= ReferenceScript("jquery-1.5.1.min.js")%>
+    <%= ReferenceScript("jquery-ui-1.8.14.custom.min.js")%>
+    <%= ReferenceScript("site.functions.js")%>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -46,8 +49,8 @@
         </div>
     </div>
     <div class="footer">
-        
     </div>
     </form>
+    
 </body>
 </html>

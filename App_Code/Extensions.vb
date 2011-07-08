@@ -32,6 +32,7 @@ Namespace Extensions
                 Return 0.0
             End Try
         End Function
+
     End Module
 
 End Namespace

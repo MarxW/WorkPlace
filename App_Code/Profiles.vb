@@ -28,6 +28,12 @@ Namespace Workplace
     Public Class Profile
         Inherits ProfileDTO
 
+        Public Const ROLE_MANAGER As String = "Manager"
+        Public Const ROLE_TEAMLEADER As String = "TeamLeader"
+        Public Const ROLE_WORKER As String = "Worker"
+
+        Public Const ROLE_DEFAULT As String = ROLE_WORKER
+
         ''' <summary>
         ''' Load Profiles with Pageing ability
         ''' </summary>
@@ -333,6 +339,26 @@ Namespace Workplace
                 data.SubmitChanges()
             End Using
         End Sub
+
+        ''' <summary>
+        ''' Generate a user password
+        ''' </summary>
+        ''' <param name="length">number of chars (optional default = 8)</param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function generatePassword(Optional ByVal length As Integer = 8) As String
+            Dim _allowedChars As String = "abcdefghijkmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789"
+            If length < 1 Then
+                length = 1
+            End If
+            Dim randomNumber As New Random()
+            Dim chars(length - 1) As Char
+            Dim allowedCharCount As Integer = _allowedChars.Length
+            For i As Integer = 0 To length - 1
+                chars(i) = _allowedChars.Chars(CInt(Fix((_allowedChars.Length) * randomNumber.NextDouble())))
+            Next i
+            Return New String(chars)
+        End Function
 
     End Class
 

@@ -1,4 +1,5 @@
-﻿
+﻿Imports Extensions
+
 Partial Class Administration_Users
     Inherits System.Web.UI.Page
 
@@ -84,6 +85,66 @@ Partial Class Administration_Users
                 'DirectCast(sender.Item.FindControl("checkboxIsActive"), CheckBox).Checked = False
                 'datasourceProjects.DataBind()
                 'datalistProfiles.DataBind()
+            End If
+        End If
+    End Sub
+
+    Protected Sub buttonAddUser_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles buttonAddUser.Click
+        Dim errors As New List(Of String)
+        If (String.IsNullOrEmpty(textboxAddFirstName.Text.Trim())) Then
+            errors.Add(Me.GetLocalResourceObject("requiredUserFirstName.ErrorMessage"))
+        End If
+        If (String.IsNullOrEmpty(textboxAddLastName.Text.Trim())) Then
+            errors.Add(Me.GetLocalResourceObject("requiredUserLastName.ErrorMessage"))
+        End If
+        If (String.IsNullOrEmpty(textboxAddEmail.Text.Trim())) Then
+            errors.Add(Me.GetLocalResourceObject("requiredUserEmail.ErrorMessage"))
+        End If
+
+        If (errors.Count > 0) Then
+            For Each s As String In errors
+                labelInsertError.Text += Me.GetLocalResourceObject("requiredProjectName.Text") & "<br />"
+            Next s
+        Else
+            labelInsertError.Text = ""
+            Dim password As String = Workplace.Profile.generatePassword(8)
+            Dim email As String = textboxAddEmail.Text.Trim.ToLower
+            Dim status As MembershipCreateStatus
+            Dim newUser As MembershipUser = Membership.CreateUser(email, password, email, _
+                                                                      "Password question", "Password answer", _
+                                                                      True, status)
+            If newUser Is Nothing Then
+                'ups!
+            Else
+                Roles.AddUserToRole(email, Workplace.Profile.ROLE_DEFAULT)
+                Dim newProfile As New Workplace.Profile
+                With newProfile
+                    .FirstName = textboxAddFirstName.Text.Trim
+                    .Holidays = textboxAddHolidays.Text.Trim.toDecimal()
+                    .LastName = textboxAddLastName.Text.Trim
+                    .Mobile = textboxAddMobile.Text.Trim
+                    .Phone = textboxAddPhone.Text.Trim
+                    .projectID = Guid.Parse(dropdownProjects.SelectedValue)
+                    .Qualification = textboxAddQualification.Text.Trim
+                    .Street = textboxAddStreet.Text.Trim
+                    .Zip = textboxAddZip.Text.Trim
+                    .Town = textboxAddTown.Text.Trim
+                    .WeeklyHours = textboxAddHours.Text.Trim.toDecimal()
+                    .userID = newUser.ProviderUserKey
+                End With
+                Workplace.Profile.addNewProfileWithUserID(newProfile)
+                'ToDo:
+                'Send message to user?
+                textboxAddFirstName.Text = ""
+                textboxAddHolidays.Text = ""
+                textboxAddLastName.Text = ""
+                textboxAddMobile.Text = ""
+                textboxAddPhone.Text = ""
+                textboxAddQualification.Text = ""
+                textboxAddStreet.Text = ""
+                textboxAddZip.Text = ""
+                textboxAddTown.Text = ""
+                textboxAddHours.Text = ""
             End If
         End If
     End Sub

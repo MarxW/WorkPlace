@@ -228,4 +228,37 @@
   <data name="labelAddZip.Text" xml:space="preserve">
     <value>Postleitzahl</value>
   </data>
+  <data name="buttonAddUser.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAddUser.Text" xml:space="preserve">
+    <value>Speichern</value>
+  </data>
+  <data name="buttonAddUserCancel.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAddUserCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="literalDialogTitle.Text" xml:space="preserve">
+    <value>Mitarbeiter hinzufügen</value>
+  </data>
+  <data name="regexValidatorEmail.ErrorMEssage" xml:space="preserve">
+    <value>E-Mail ist ungültig.</value>
+  </data>
+  <data name="regexValidatorEmail.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="regexValidatorEmail.ToolTip" xml:space="preserve">
+    <value>E-Mail ist ungültig.</value>
+  </data>
+  <data name="requiredUserEmail.ErrorMessage" xml:space="preserve">
+    <value>E-Mail ist erforderlich</value>
+  </data>
+  <data name="requiredUserEmail.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="requiredUserEmail.ToolTip" xml:space="preserve">
+    <value>E-Mail ist erforderlich</value>
+  </data>
 </root>

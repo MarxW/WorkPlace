@@ -53,52 +53,35 @@ Partial Class Administration_Users
     End Sub
 
     Protected Sub datalistProfiles_ItemCommand(ByVal source As Object, ByVal sender As DataListCommandEventArgs) Handles datalistProfiles.ItemCommand
-        If (sender.CommandName = "Insert") Then
-            Dim errors As New List(Of String)
-            If (String.IsNullOrEmpty(DirectCast(sender.Item.FindControl("textboxAddFirstName"), TextBox).Text.Trim())) Then
-                errors.Add(Me.GetLocalResourceObject("requiredUserFirstName.ErrorMessage"))
-            End If
-            If (String.IsNullOrEmpty(DirectCast(sender.Item.FindControl("textboxAddLastName"), TextBox).Text.Trim())) Then
-                errors.Add(Me.GetLocalResourceObject("requiredUserLastName.ErrorMessage"))
-            End If
+        literalHeadScript.Text = ""
+    End Sub
 
-            If (errors.Count < 1) Then
-                For Each s As String In errors
-                    DirectCast(sender.Item.FindControl("labelInsertError"), Label).Text += Me.GetLocalResourceObject("requiredProjectName.Text") & "<br />"
-                Next s
-            Else
-                DirectCast(sender.Item.FindControl("labelInsertError"), Label).Text = ""
+    Protected Sub datalistProfiles_EditCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.EditCommand
+        datalistProfiles.EditItemIndex = e.Item.ItemIndex
+        datalistProfiles.DataBind()
+        literalHeadScript.Text = ""
+    End Sub
 
-                'Dim project As New Workplace.Project
-                'With project
-                '    .Name = DirectCast(sender.Item.FindControl("textboxAddName"), TextBox).Text.Trim()
-                '    .Street = DirectCast(sender.Item.FindControl("textboxAddStreet"), TextBox).Text.Trim()
-                '    .Zip = DirectCast(sender.Item.FindControl("textboxAddZip"), TextBox).Text.Trim()
-                '    .Town = DirectCast(sender.Item.FindControl("textboxAddTown"), TextBox).Text.Trim()
-                '    .isActive = DirectCast(sender.Item.FindControl("checkboxIsActive"), CheckBox).Checked
-                'End With
-                'Workplace.Project.addNewProject(project)
-                'DirectCast(sender.Item.FindControl("textboxAddName"), TextBox).Text = ""
-                'DirectCast(sender.Item.FindControl("textboxAddStreet"), TextBox).Text = ""
-                'DirectCast(sender.Item.FindControl("textboxAddZip"), TextBox).Text = ""
-                'DirectCast(sender.Item.FindControl("textboxAddTown"), TextBox).Text = ""
-                'DirectCast(sender.Item.FindControl("checkboxIsActive"), CheckBox).Checked = False
-                'datasourceProjects.DataBind()
-                'datalistProfiles.DataBind()
-            End If
-        End If
+    Protected Sub datalistProfiles_CancelCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.CancelCommand
+        datalistProfiles.EditItemIndex = -1
+        datalistProfiles.DataBind()
+        literalHeadScript.Text = ""
     End Sub
 
     Protected Sub buttonAddUser_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles buttonAddUser.Click
         Dim errors As New List(Of String)
-        If (String.IsNullOrEmpty(textboxAddFirstName.Text.Trim())) Then
-            errors.Add(Me.GetLocalResourceObject("requiredUserFirstName.ErrorMessage"))
-        End If
-        If (String.IsNullOrEmpty(textboxAddLastName.Text.Trim())) Then
-            errors.Add(Me.GetLocalResourceObject("requiredUserLastName.ErrorMessage"))
-        End If
-        If (String.IsNullOrEmpty(textboxAddEmail.Text.Trim())) Then
-            errors.Add(Me.GetLocalResourceObject("requiredUserEmail.ErrorMessage"))
+        If (Workplace.Project.canAddUsers(dropdownProjects.SelectedValue) = False) Then
+            errors.Add(Me.GetLocalResourceObject("errorMaxUsers"))
+        Else
+            If (String.IsNullOrEmpty(textboxAddFirstName.Text.Trim())) Then
+                errors.Add(Me.GetLocalResourceObject("requiredUserFirstName.ErrorMessage"))
+            End If
+            If (String.IsNullOrEmpty(textboxAddLastName.Text.Trim())) Then
+                errors.Add(Me.GetLocalResourceObject("requiredUserLastName.ErrorMessage"))
+            End If
+            If (String.IsNullOrEmpty(textboxAddEmail.Text.Trim())) Then
+                errors.Add(Me.GetLocalResourceObject("requiredUserEmail.ErrorMessage"))
+            End If
         End If
 
         If (errors.Count > 0) Then
@@ -114,9 +97,9 @@ Partial Class Administration_Users
                                                                       "Password question", "Password answer", _
                                                                       True, status)
             If newUser Is Nothing Then
-                'ups!
+                labelInsertError.Text = Workplace.Profile.getAddUserErrorMessage(status)
             Else
-                Roles.AddUserToRole(email, Workplace.Profile.ROLE_DEFAULT)
+                Roles.AddUserToRole(email, dropdownAddRole.SelectedValue)
                 Dim newProfile As New Workplace.Profile
                 With newProfile
                     .FirstName = textboxAddFirstName.Text.Trim
@@ -133,8 +116,8 @@ Partial Class Administration_Users
                     .userID = newUser.ProviderUserKey
                 End With
                 Workplace.Profile.addNewProfileWithUserID(newProfile)
-                'ToDo:
-                'Send message to user?
+                Workplace.Mailer.sendNewUserEmail(email, password, newProfile.FirstName, newProfile.LastName)
+                textboxAddEmail.Text = ""
                 textboxAddFirstName.Text = ""
                 textboxAddHolidays.Text = ""
                 textboxAddLastName.Text = ""
@@ -146,6 +129,13 @@ Partial Class Administration_Users
                 textboxAddTown.Text = ""
                 textboxAddHours.Text = ""
             End If
+        End If
+        If (String.IsNullOrEmpty(labelInsertError.Text)) Then
+            literalHeadScript.Text = "<script type=""text/javascript"">" & vbCrLf
+            literalHeadScript.Text += "$(document).ready(function () { showAddUserForm(); }" & vbCrLf
+            literalHeadScript.Text += "</script>"
+        Else
+            literalHeadScript.Text = ""
         End If
     End Sub
 End Class

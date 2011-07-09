@@ -220,6 +220,48 @@ Namespace Workplace
             End Using
         End Sub
 
+        ''' <summary>
+        ''' Check if the project can add users
+        ''' </summary>
+        ''' <param name="projectID"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function canAddUsers(ByVal projectID As String) As Boolean
+            Return canAddUsers(Guid.Parse(projectID))
+        End Function
+
+        ''' <summary>
+        ''' Check if the project can add users
+        ''' </summary>
+        ''' <param name="projectID"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function canAddUsers(ByVal projectID As Guid) As Boolean
+            Return canAddUsers(getProject(projectID))
+        End Function
+
+        ''' <summary>
+        ''' Check if the project can add users
+        ''' </summary>
+        ''' <param name="p"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function canAddUsers(ByVal p As Project) As Boolean
+            Return numberOfOpenUsers(p) > 0
+        End Function
+
+        ''' <summary>
+        ''' Return how many users can be added.
+        ''' </summary>
+        ''' <param name="p"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function numberOfOpenUsers(ByVal p As Project) As Integer
+            Dim users As List(Of Profile) = Profile.getAllProfiles(p.projectID)
+            Dim currentLicence As Licence = Licence.getLicenceByID(p.licenceID)
+            Return currentLicence.MaxUsers - users.Count
+        End Function
+
     End Class
 
 End Namespace

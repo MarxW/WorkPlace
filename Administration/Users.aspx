@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="../Styles/DataStyles.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../Scripts/jquery.tools.min.js"></script>
+    <asp:Literal ID="literalHeadScript" runat="server" Text="" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div style="margin:5px;">
@@ -67,6 +67,138 @@
                     </tr>
                 </table>
             </ItemTemplate>
+            <EditItemTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="contentRow">
+                        <td width="190px" style="text-align:right;vertical-align:top;">
+                            <asp:Button ID="buttonSave" runat="server" meta:resourcekey="buttonSave" CommandName="Update" CausesValidation="False" />
+                            <asp:Button ID="buttonCancel" runat="server" meta:resourcekey="buttonCancel" CommandName="Cancel" CausesValidation="False" />
+                            <br /><br />
+                            <asp:Button ID="buttonPassword" runat="server" meta:resourcekey="buttonPassword" CommandName="Password" CausesValidation="False" />
+                        </td>
+                        <td width="675px" >
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditFirstName" meta:resourcekey="labelEditFirstName" runat="server" />
+                                        <asp:TextBox ID="textboxEditFirstName" runat="server" Text='<%# Eval("FirstName") %>' Width="315px" />
+                                    </td>
+                                    <td style="width:15px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditLastName" meta:resourcekey="labelEditLastName" runat="server" />
+                                        <asp:TextBox ID="textboxEditLastName" runat="server" Text='<%# Eval("LastName") %>' Width="315px" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td colspan="3">
+                                        <asp:Label ID="labelEditEmail" meta:resourcekey="labelEditEmail" runat="server" />
+                                        <asp:TextBox ID="textboxEmail" runat="server" Text='<%# Eval("Email") %>' Width="315px" ReadOnly="true" />
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;" colspan="3">
+                                        <asp:Label ID="labelEditStreet" meta:resourcekey="labelEditStreet" runat="server" />
+                                        <asp:TextBox ID="textboxStreet" runat="server" Text='<%# Eval("Street") %>' Width="515px" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditTown" meta:resourcekey="labelEditTown" runat="server" />
+                                        <asp:TextBox ID="textboxTown" runat="server" Text='<%# Eval("Town") %>' Width="315px" />
+                                    </td>
+                                    <td style="width:15px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditZip" meta:resourcekey="labelEditZip" runat="server" />
+                                        <asp:TextBox ID="textboxZip" runat="server" Text='<%# Eval("Zip") %>' Width="85px" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;" colspan="3">
+                                        <asp:Label ID="labelEditQualification" meta:resourcekey="labelEditQualification" runat="server" />
+                                        <asp:TextBox ID="textboxEditQualification" runat="server" Text='<%# Eval("Qualification") %>' TextMode="MultiLine" Height="40px" Width="515px" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;" colspan="3">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="labelEditWeeklyHours" meta:resourcekey="labelEditWeeklyHours" runat="server" />
+                                                    <asp:TextBox ID="textboxEditWeeklyHours" runat="server" Text='<%# Eval("WeeklyHours") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                    <asp:Label ID="labelEditHolidays" meta:resourcekey="labelEditHolidays" runat="server" />
+                                                    <asp:TextBox ID="textboxEditHolidays" runat="server" Text='<%# Eval("Holidays") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                    <asp:Label ID="labelEditTaxClass" meta:resourcekey="labelEditTaxClass" runat="server" />
+                                                    <asp:TextBox ID="textboxEditTaxClass" runat="server" Text='<%# Eval("TaxClass") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                    <asp:Label ID="labelEditSalary" meta:resourcekey="labelEditSalary" runat="server" />
+                                                    <asp:TextBox ID="textboxEditSalary" runat="server" Text='<%# Eval("Salary") %>' Width="85px" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditPhone" meta:resourcekey="labelEditPhone" runat="server" />
+                                        <asp:TextBox ID="textboxEditPhone" runat="server" Text='<%# Eval("Phone") %>' Width="315px" />
+                                    </td>
+                                    <td style="width:15px;"></td>
+                                    <td style="width:320px;">
+                                        <asp:Label ID="labelEditMobile" meta:resourcekey="labelEditMobile" runat="server" />
+                                        <asp:TextBox ID="textboxEditMobile" runat="server" Text='<%# Eval("Mobile") %>' Width="315px" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
+                                    <td style="width:320px;" colspan="3">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td>
+                                                    <asp:Label ID="labelEditBirthday" meta:resourcekey="labelEditBirthday" runat="server" />
+                                                    <asp:TextBox ID="textboxEditBirthday" CssClass="userdatepicker" runat="server" Text='<%# Eval("BirthdateString") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                    <asp:Label ID="labelEditStartDate" meta:resourcekey="labelEditStartDate" runat="server" />
+                                                    <asp:TextBox ID="textboxEditStartDate" CssClass="userdatepicker" runat="server" Text='<%# Eval("StartDateString") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                    <asp:Label ID="labelEditEndDate" meta:resourcekey="labelEditEndDate" runat="server" />
+                                                    <asp:TextBox ID="textboxEditEndDate" CssClass="userdatepicker" runat="server" Text='<%# Eval("EndDateString") %>' Width="85px" />
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </EditItemTemplate>
             <FooterTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="footerRow">
@@ -172,6 +304,16 @@
                         <asp:TextBox Width="140px" ID="textboxAddHolidays" CssClass="addUserForm" runat="server" Text="" />
                     </td>
                 </tr>
+                <tr>
+                    <td colspan="3">
+                        <asp:Label ID="labelAddRole" meta:resourcekey="labelAddRole" runat="server" />
+                        <asp:DropDownList runat="server" ID="dropdownAddRole">
+                            <asp:ListItem Value="Worker" Text="<%$ Resources:Global, roleWorker %>" />
+                            <asp:ListItem Value="TeamLeader" Text="<%$ Resources:Global, roleTeamLeader %>" />
+                            <asp:ListItem Value="Manager" Text="<%$ Resources:Global, roleManager %>" />
+                        </asp:DropDownList>
+                    </td>
+                </tr>
                 <tr style="height:10px;">
                     <td colspan="3">
                         <asp:ValidationSummary ID="validationsummaryAddUser" runat="server" CssClass="error" 
@@ -194,8 +336,12 @@
             $('#closeAddUserDialog').bind('click', function () {
                 $('#overlay').hide();
                 $('#dialogWrap').hide();
+
             });
+            $(".userdatepicker").datepicker({ dateFormat: 'dd.mm.yy', changeYear: true });
             $('#dialogWrap').realcenter();
+            $('#overlay').hide();
+            $('#dialogWrap').hide();
         });
         function showAddUserForm() {
             $('#overlay').show();

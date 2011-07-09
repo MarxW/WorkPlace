@@ -34,6 +34,45 @@ Namespace Workplace
 
         Public Const ROLE_DEFAULT As String = ROLE_WORKER
 
+        Private _email As String = String.Empty
+
+        Public ReadOnly Property Email As String
+            Get
+                If (String.IsNullOrEmpty(Me._email)) Then
+                    Dim aspUser As MembershipUser = Membership.GetUser(Me.userID)
+                    Me._email = aspUser.Email
+                End If
+                Return Me._email
+            End Get
+        End Property
+
+        Public ReadOnly Property BirthdateString As String
+            Get
+                If (Me.Birthdate = Date.MaxValue Or Me.Birthdate = Date.MinValue) Then
+                    Return ""
+                End If
+                Return Me.Birthdate.ToShortDateString
+            End Get
+        End Property
+
+        Public ReadOnly Property StartDateString As String
+            Get
+                If (Me.StartDate = Date.MaxValue Or Me.StartDate = Date.MinValue) Then
+                    Return ""
+                End If
+                Return Me.StartDate.ToShortDateString
+            End Get
+        End Property
+
+        Public ReadOnly Property EndDateString As String
+            Get
+                If (Me.EndDate = Date.MaxValue Or Me.EndDate = Date.MinValue) Then
+                    Return ""
+                End If
+                Return Me.EndDate.ToShortDateString
+            End Get
+        End Property
+
         ''' <summary>
         ''' Load Profiles with Pageing ability
         ''' </summary>
@@ -358,6 +397,44 @@ Namespace Workplace
                 chars(i) = _allowedChars.Chars(CInt(Fix((_allowedChars.Length) * randomNumber.NextDouble())))
             Next i
             Return New String(chars)
+        End Function
+
+
+        Public Shared Function getAddUserErrorMessage(ByVal status As MembershipCreateStatus) As String
+
+            Select Case status
+
+                Case MembershipCreateStatus.DuplicateUserName
+                    Return "Username already exists. Please enter a different user name."
+
+                Case MembershipCreateStatus.DuplicateEmail
+                    Return "A username for that e-mail address already exists. Please enter a different e-mail address."
+
+                Case MembershipCreateStatus.InvalidPassword
+                    Return "The password provided is invalid. Please enter a valid password value."
+
+                Case MembershipCreateStatus.InvalidEmail
+                    Return "The e-mail address provided is invalid. Please check the value and try again."
+
+                Case MembershipCreateStatus.InvalidAnswer
+                    Return "The password retrieval answer provided is invalid. Please check the value and try again."
+
+                Case MembershipCreateStatus.InvalidQuestion
+                    Return "The password retrieval question provided is invalid. Please check the value and try again."
+
+                Case MembershipCreateStatus.InvalidUserName
+                    Return "The user name provided is invalid. Please check the value and try again."
+
+                Case MembershipCreateStatus.ProviderError
+                    Return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator."
+
+                Case MembershipCreateStatus.UserRejected
+                    Return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator."
+
+                Case Else
+                    Return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator."
+            End Select
+
         End Function
 
     End Class

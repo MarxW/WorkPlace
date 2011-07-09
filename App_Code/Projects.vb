@@ -262,6 +262,25 @@ Namespace Workplace
             Return currentLicence.MaxUsers - users.Count
         End Function
 
+        ''' <summary>
+        ''' Return how many teams can be created
+        ''' </summary>
+        ''' <param name="p"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function numberOfOpenTeams(ByVal p As Project) As Integer
+            Return 0
+        End Function
+
+        ''' <summary>
+        ''' Return how many teams can be created
+        ''' </summary>
+        ''' <param name="projectID"></param>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
+        Public Shared Function numberOfOpenTeams(ByVal projectID As Guid) As Integer
+            Return numberOfOpenTeams(Project.getProject(projectID))
+        End Function
     End Class
 
 End Namespace

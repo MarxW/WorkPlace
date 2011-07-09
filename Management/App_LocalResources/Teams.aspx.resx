@@ -117,64 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="linkAboutDescription" xml:space="preserve">
-    <value>Information</value>
+  <data name="ff" xml:space="preserve">
+    <value />
   </data>
-  <data name="linkAboutTitle" xml:space="preserve">
-    <value>Über</value>
+  <data name="labelIntroduction.PreformatedText" xml:space="preserve">
+    <value>Es können noch {0} Team(s) angelegt werden.</value>
   </data>
-  <data name="linkAdministrationDescription" xml:space="preserve">
-    <value>Administatieve Aufgaben</value>
-  </data>
-  <data name="linkAdministrationTitle" xml:space="preserve">
-    <value>Administration</value>
-  </data>
-  <data name="linkAdminProjectsDescription" xml:space="preserve">
-    <value>Projekte verwalten</value>
-  </data>
-  <data name="linkAdminProjectsTitle" xml:space="preserve">
-    <value>Projekte</value>
-  </data>
-  <data name="linkHomePageDescription" xml:space="preserve">
-    <value>Zurück zur Startseite</value>
-  </data>
-  <data name="linkHomePageTitle" xml:space="preserve">
-    <value>Home</value>
-  </data>
-  <data name="linkAdminLicenceDescription" xml:space="preserve">
-    <value>Lizenzen verwalten</value>
-  </data>
-  <data name="linkAdminLicenceTitle" xml:space="preserve">
-    <value>Lizenzen</value>
-  </data>
-  <data name="linkAdminUsersDescription" xml:space="preserve">
-    <value>Benutzer verwalten</value>
-  </data>
-  <data name="linkAdminUsersTitle" xml:space="preserve">
-    <value>Benutzer</value>
-  </data>
-  <data name="roleManager" xml:space="preserve">
-    <value>PDL</value>
-  </data>
-  <data name="roleTeamLeader" xml:space="preserve">
-    <value>Teamleiter</value>
-  </data>
-  <data name="roleWorker" xml:space="preserve">
-    <value>Mitarbeiter</value>
-  </data>
-  <data name="applicationName" xml:space="preserve">
-    <value>Workplace</value>
-  </data>
-  <data name="linkManageDescription" xml:space="preserve">
-    <value>Verwaltungsaufgaben</value>
-  </data>
-  <data name="linkManageTitle" xml:space="preserve">
-    <value>Verwaltung</value>
-  </data>
-  <data name="linkManageTeamsDescription" xml:space="preserve">
-    <value>Teamsverwalten</value>
-  </data>
-  <data name="linkManageTeamsTitle" xml:space="preserve">
-    <value>Teams</value>
+  <data name="PageTitle" xml:space="preserve">
+    <value>Teams verwalten</value>
   </data>
 </root>

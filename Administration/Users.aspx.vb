@@ -3,6 +3,8 @@
 Partial Class Administration_Users
     Inherits System.Web.UI.Page
 
+#Region "Properties"
+
     Private Property TotalRowCount() As Integer
         Get
             Dim o As Object = ViewState("TotalRowCount")
@@ -47,13 +49,36 @@ Partial Class Administration_Users
         End Get
     End Property
 
+#End Region
+
     Protected Sub datasourceProfiles_Selected(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.ObjectDataSourceStatusEventArgs) Handles datasourceProfiles.Selected
         Dim data As List(Of Workplace.Profile) = DirectCast(e.ReturnValue, List(Of Workplace.Profile))
         TotalRowCount = data.Count
+        literalHeadScript.Text = ""
     End Sub
 
-    Protected Sub datalistProfiles_ItemCommand(ByVal source As Object, ByVal sender As DataListCommandEventArgs) Handles datalistProfiles.ItemCommand
+    Protected Sub datalistProfiles_ItemCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.ItemCommand
         literalHeadScript.Text = ""
+        If (e.CommandName = "Password") Then
+            Dim userID As Guid = CType(datalistProfiles.DataKeys(e.Item.ItemIndex), Guid)
+            Workplace.Profile.resetPassword(userID)
+            literalHeadScript.Text = "<script type=""text/javascript"">" & vbCrLf
+            literalHeadScript.Text += "$(document).ready(function () {" & vbCrLf
+            literalHeadScript.Text += "$('<div>" & Me.GetLocalResourceObject("dialogPasswordReset") & _
+                                        "</div>').dialog({ modal: true, resizable: false, title: '" & _
+                                        Me.GetLocalResourceObject("dialogPasswordResetTitle") & "' });" & vbCrLf
+            literalHeadScript.Text += " });" & vbCrLf
+            literalHeadScript.Text += "</script>"
+        End If
+    End Sub
+
+    Protected Sub datalistProfiles_DeleteCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.DeleteCommand
+        literalHeadScript.Text = ""
+        Dim userID As Guid = CType(datalistProfiles.DataKeys(e.Item.ItemIndex), Guid)
+        Workplace.Profile.deleteProfile(userID)
+        Membership.DeleteUser(Membership.GetUser(userID).UserName, True)
+        datasourceProfiles.DataBind()
+        datalistProfiles.DataBind()
     End Sub
 
     Protected Sub datalistProfiles_EditCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.EditCommand
@@ -66,6 +91,34 @@ Partial Class Administration_Users
         datalistProfiles.EditItemIndex = -1
         datalistProfiles.DataBind()
         literalHeadScript.Text = ""
+    End Sub
+
+    Protected Sub datalistProfiles_UpdateCommand(ByVal source As Object, ByVal e As DataListCommandEventArgs) Handles datalistProfiles.UpdateCommand
+        literalHeadScript.Text = ""
+        Dim userID As Guid = CType(datalistProfiles.DataKeys(e.Item.ItemIndex), Guid)
+        Dim currentProfile As Workplace.Profile = Workplace.Profile.getProfileByID(userID)
+        With currentProfile
+            .Birthdate = DirectCast(e.Item.FindControl("textboxEditBirthday"), TextBox).Text.Trim.toDate()
+            .EndDate = DirectCast(e.Item.FindControl("textboxEditEndDate"), TextBox).Text.Trim.toDate
+            .FirstName = DirectCast(e.Item.FindControl("textboxEditFirstName"), TextBox).Text.Trim
+            .Holidays = DirectCast(e.Item.FindControl("textboxEditHolidays"), TextBox).Text.Trim.toDecimal
+            .LastName = DirectCast(e.Item.FindControl("textboxEditLastName"), TextBox).Text.Trim
+            .Mobile = DirectCast(e.Item.FindControl("textboxEditMobile"), TextBox).Text.Trim
+            .Phone = DirectCast(e.Item.FindControl("textboxEditPhone"), TextBox).Text.Trim
+            .Qualification = DirectCast(e.Item.FindControl("textboxEditQualification"), TextBox).Text.Trim
+            .Salary = DirectCast(e.Item.FindControl("textboxEditSalary"), TextBox).Text.Trim.toDecimal
+            .StartDate = DirectCast(e.Item.FindControl("textboxEditStartDate"), TextBox).Text.Trim.toDate
+            .Street = DirectCast(e.Item.FindControl("textboxEditStreet"), TextBox).Text.Trim
+            .TaxClass = DirectCast(e.Item.FindControl("textboxEditTaxClass"), TextBox).Text.Trim
+            .Town = DirectCast(e.Item.FindControl("textboxEditTown"), TextBox).Text.Trim
+            .WeeklyHours = DirectCast(e.Item.FindControl("textboxEditWeeklyHours"), TextBox).Text.Trim.toDecimal
+            .Zip = DirectCast(e.Item.FindControl("textboxEditZip"), TextBox).Text.Trim
+            .Role = DirectCast(e.Item.FindControl("dropdownEditRole"), DropDownList).SelectedValue
+        End With
+        Workplace.Profile.updateProfile(currentProfile)
+        datalistProfiles.EditItemIndex = -1
+        datasourceProfiles.DataBind()
+        datalistProfiles.DataBind()
     End Sub
 
     Protected Sub buttonAddUser_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles buttonAddUser.Click

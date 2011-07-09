@@ -123,4 +123,10 @@
   <data name="newUserTitle" xml:space="preserve">
     <value>Neue {0} Benutzerkonto</value>
   </data>
+  <data name="resetPassword" xml:space="preserve">
+    <value>Liebe/r {0},\n\nDeine neue Logindaten sind:\nBenutzername: {1}\nPasswort:     {2}\n\nBei Fragen oder Problemen kannst du dich bei dein {3}\n\n************************************</value>
+  </data>
+  <data name="resetPasswortTitle" xml:space="preserve">
+    <value>Ihr Passwort bei {0}</value>
+  </data>
 </root>

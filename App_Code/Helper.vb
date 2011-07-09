@@ -6,9 +6,37 @@ Namespace Workplace
 
     Public Class Mailer
 
+        ''' <summary>
+        ''' Send the new password via email.
+        ''' </summary>
+        ''' <param name="email"></param>
+        ''' <param name="password"></param>
+        ''' <param name="firstname"></param>
+        ''' <param name="lastname"></param>
+        ''' <remarks></remarks>
+        Public Shared Sub sendPasswordReset(ByVal email As String, ByVal password As String, ByVal firstname As String, ByVal lastname As String)
+            Dim appName As String = HttpContext.GetGlobalResourceObject("Global", "applicationName")
+            Dim _message As String = HttpContext.GetGlobalResourceObject("Messages", "resetPassword")
+            Dim message As String = String.Format(_message, _
+                                                  firstname & " " & lastname, _
+                                                  email, _
+                                                  password, _
+                                                  HttpContext.GetGlobalResourceObject("Global", "roleManager"))
+            Dim title As String = String.Format(HttpContext.GetGlobalResourceObject("Messages", "resetPasswortTitle"), appName)
+            sendEmail(title, message, email)
+        End Sub
+
+        ''' <summary>
+        ''' Send login information via email.
+        ''' </summary>
+        ''' <param name="email"></param>
+        ''' <param name="password"></param>
+        ''' <param name="firstname"></param>
+        ''' <param name="lastname"></param>
+        ''' <remarks></remarks>
         Public Shared Sub sendNewUserEmail(ByVal email As String, ByVal password As String, ByVal firstname As String, ByVal lastname As String)
-            Dim appName As String = HttpContext.GetGlobalResourceObject("Global.resx", "applicationName")
-            Dim message As String = String.Format(HttpContext.GetGlobalResourceObject("Messages.resx", "newUser"), _
+            Dim appName As String = HttpContext.GetGlobalResourceObject("Global", "applicationName")
+            Dim message As String = String.Format(HttpContext.GetGlobalResourceObject("Messages", "newUser"), _
                                                   firstname & " " & lastname, _
                                                   appName, _
                                                   appName, _
@@ -17,8 +45,8 @@ Namespace Workplace
                                                   HttpContext.Current.Request.Url.Host, _
                                                   email, _
                                                   password, _
-                                                  HttpContext.GetGlobalResourceObject("Global.resx", "roleManager"))
-            Dim title As String = String.Format(HttpContext.GetGlobalResourceObject("Messages.resx", "newUserTitle"), appName)
+                                                  HttpContext.GetGlobalResourceObject("Global", "roleManager"))
+            Dim title As String = String.Format(HttpContext.GetGlobalResourceObject("Messages", "newUserTitle"), appName)
             sendEmail(title, message, email)
         End Sub
 

@@ -291,6 +291,12 @@
   <data name="buttonSave.Text" xml:space="preserve">
     <value>Speichern</value>
   </data>
+  <data name="dialogPasswordReset" xml:space="preserve">
+    <value>Das Passwort wurde zurückgesetzt und den Anwender zugesendet.</value>
+  </data>
+  <data name="dialogPasswordResetTitle" xml:space="preserve">
+    <value>Passwort zurücksetzung</value>
+  </data>
   <data name="errorMaxUsers" xml:space="preserve">
     <value>Maximale anzahl an Mitarbeiter wurde erreicht</value>
   </data>
@@ -353,6 +359,12 @@
   </data>
   <data name="labelEditQualification.Text" xml:space="preserve">
     <value>Qualifikation</value>
+  </data>
+  <data name="labelEditRole.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelEditRole.Text" xml:space="preserve">
+    <value>Position</value>
   </data>
   <data name="labelEditSalary.CssClass" xml:space="preserve">
     <value>itemLabel</value>

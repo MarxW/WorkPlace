@@ -19,7 +19,7 @@
                 <asp:Parameter DefaultValue="15" Name="maxRows" Type="Int32" />
             </SelectParameters>
         </asp:ObjectDataSource>
-        <asp:DataList ID="datalistProfiles" runat="server" DataSourceID="datasourceProfiles" ItemStyle-CssClass="contentRowOne" AlternatingItemStyle-CssClass="contentRowTwo">
+        <asp:DataList ID="datalistProfiles" runat="server" DataKeyField="userID" DataSourceID="datasourceProfiles" ItemStyle-CssClass="contentRowOne" AlternatingItemStyle-CssClass="contentRowTwo">
             <HeaderTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="headRow">
@@ -80,6 +80,13 @@
                             <table cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td style="width:10px;"></td>
+                                    <td colspan="3">
+                                        <asp:Label ID="labelEditErrors" runat="server" Text="" CssClass="error" />
+                                    </td>
+                                    <td style="width:10px;"></td>
+                                </tr>
+                                <tr>
+                                    <td style="width:10px;"></td>
                                     <td style="width:320px;">
                                         <asp:Label ID="labelEditFirstName" meta:resourcekey="labelEditFirstName" runat="server" />
                                         <asp:TextBox ID="textboxEditFirstName" runat="server" Text='<%# Eval("FirstName") %>' Width="315px" />
@@ -103,7 +110,7 @@
                                     <td style="width:10px;"></td>
                                     <td style="width:320px;" colspan="3">
                                         <asp:Label ID="labelEditStreet" meta:resourcekey="labelEditStreet" runat="server" />
-                                        <asp:TextBox ID="textboxStreet" runat="server" Text='<%# Eval("Street") %>' Width="515px" />
+                                        <asp:TextBox ID="textboxEditStreet" runat="server" Text='<%# Eval("Street") %>' Width="515px" />
                                     </td>
                                     <td style="width:10px;"></td>
                                 </tr>
@@ -111,12 +118,12 @@
                                     <td style="width:10px;"></td>
                                     <td style="width:320px;">
                                         <asp:Label ID="labelEditTown" meta:resourcekey="labelEditTown" runat="server" />
-                                        <asp:TextBox ID="textboxTown" runat="server" Text='<%# Eval("Town") %>' Width="315px" />
+                                        <asp:TextBox ID="textboxEditTown" runat="server" Text='<%# Eval("Town") %>' Width="315px" />
                                     </td>
                                     <td style="width:15px;"></td>
                                     <td style="width:320px;">
                                         <asp:Label ID="labelEditZip" meta:resourcekey="labelEditZip" runat="server" />
-                                        <asp:TextBox ID="textboxZip" runat="server" Text='<%# Eval("Zip") %>' Width="85px" />
+                                        <asp:TextBox ID="textboxEditZip" runat="server" Text='<%# Eval("Zip") %>' Width="85px" />
                                     </td>
                                     <td style="width:10px;"></td>
                                 </tr>
@@ -172,7 +179,7 @@
                                 </tr>
                                 <tr>
                                     <td style="width:10px;"></td>
-                                    <td style="width:320px;" colspan="3">
+                                    <td colspan="3">
                                         <table cellpadding="0" cellspacing="0">
                                             <tr>
                                                 <td>
@@ -188,6 +195,15 @@
                                                 <td>
                                                     <asp:Label ID="labelEditEndDate" meta:resourcekey="labelEditEndDate" runat="server" />
                                                     <asp:TextBox ID="textboxEditEndDate" CssClass="userdatepicker" runat="server" Text='<%# Eval("EndDateString") %>' Width="85px" />
+                                                </td>
+                                                <td style="width:15px;"></td>
+                                                <td>
+                                                   <asp:Label ID="labelEditRole" meta:resourcekey="labelEditRole" runat="server" />
+                                                   <asp:DropDownList runat="server" ID="dropdownEditRole" SelectedValue='<%#Eval("Role") %>'>
+                                                        <asp:ListItem Value="Worker" Text="<%$ Resources:Global, roleWorker %>" />
+                                                        <asp:ListItem Value="TeamLeader" Text="<%$ Resources:Global, roleTeamLeader %>" />
+                                                        <asp:ListItem Value="Manager" Text="<%$ Resources:Global, roleManager %>" />
+                                                    </asp:DropDownList>
                                                 </td>
                                             </tr>
                                         </table>
@@ -338,7 +354,7 @@
                 $('#dialogWrap').hide();
 
             });
-            $(".userdatepicker").datepicker({ dateFormat: 'dd.mm.yy', changeYear: true });
+            $('.userdatepicker').datepicker({ dateFormat: 'dd.mm.yy', changeYear: true });
             $('#dialogWrap').realcenter();
             $('#overlay').hide();
             $('#dialogWrap').hide();

@@ -35,7 +35,16 @@ Namespace Workplace
         Public Const ROLE_DEFAULT As String = ROLE_WORKER
 
         Private _email As String = String.Empty
+        Private _role As String = String.Empty
 
+#Region "Properties"
+
+        ''' <summary>
+        ''' Get asp user email
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
         Public ReadOnly Property Email As String
             Get
                 If (String.IsNullOrEmpty(Me._email)) Then
@@ -46,6 +55,38 @@ Namespace Workplace
             End Get
         End Property
 
+        ''' <summary>
+        ''' Load role from role provider.
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks>Changing this will not require an updateProfile call!</remarks>
+        Public Property Role As String
+            Get
+                If (String.IsNullOrEmpty(Me._role)) Then
+                    Dim aspUser As MembershipUser = Membership.GetUser(Me.userID)
+                    For Each s As String In Roles.GetRolesForUser(aspUser.UserName)
+                        Me._role = s
+                    Next s
+                End If
+                Return Me._role
+            End Get
+            Set(ByVal value As String)
+                If Not (value = Me.Role) Then
+                    Dim aspUser As MembershipUser = Membership.GetUser(Me.userID)
+                    Roles.RemoveUserFromRole(aspUser.UserName, Me._role)
+                    Roles.AddUserToRole(aspUser.UserName, value)
+                    Me._role = value
+                End If
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' Get birthdate as string
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
         Public ReadOnly Property BirthdateString As String
             Get
                 If (Me.Birthdate = Date.MaxValue Or Me.Birthdate = Date.MinValue) Then
@@ -55,6 +96,12 @@ Namespace Workplace
             End Get
         End Property
 
+        ''' <summary>
+        ''' Get Startdate as string
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
         Public ReadOnly Property StartDateString As String
             Get
                 If (Me.StartDate = Date.MaxValue Or Me.StartDate = Date.MinValue) Then
@@ -64,6 +111,12 @@ Namespace Workplace
             End Get
         End Property
 
+        ''' <summary>
+        ''' Get Enddate as String
+        ''' </summary>
+        ''' <value></value>
+        ''' <returns></returns>
+        ''' <remarks></remarks>
         Public ReadOnly Property EndDateString As String
             Get
                 If (Me.EndDate = Date.MaxValue Or Me.EndDate = Date.MinValue) Then
@@ -72,6 +125,8 @@ Namespace Workplace
                 Return Me.EndDate.ToShortDateString
             End Get
         End Property
+
+#End Region
 
         ''' <summary>
         ''' Load Profiles with Pageing ability
@@ -399,6 +454,21 @@ Namespace Workplace
             Return New String(chars)
         End Function
 
+        ''' <summary>
+        ''' Reset the Password
+        ''' </summary>
+        ''' <param name="userID">GUID</param>
+        ''' <remarks></remarks>
+        Public Shared Sub resetPassword(ByVal userID As Guid)
+            Dim aspUser As MembershipUser = Membership.GetUser(userID)
+            Dim newPass As String = generatePassword()
+            If Not (aspUser Is Nothing And Not IsDBNull(aspUser)) Then
+                Dim oldPass As String = aspUser.ResetPassword()
+                aspUser.ChangePassword(oldPass, newPass)
+                Dim _profile As Profile = Profile.getProfileByID(userID)
+                Mailer.sendPasswordReset(aspUser.Email, newPass, _profile.FirstName, _profile.LastName)
+            End If
+        End Sub
 
         Public Shared Function getAddUserErrorMessage(ByVal status As MembershipCreateStatus) As String
 

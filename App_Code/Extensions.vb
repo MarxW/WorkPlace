@@ -33,6 +33,15 @@ Namespace Extensions
             End Try
         End Function
 
+        <System.Runtime.CompilerServices.Extension()> _
+        Public Function toDate(ByVal s As String) As Date
+            Try
+                Return Date.Parse(s)
+            Catch ex As Exception
+                Return Date.MinValue
+            End Try
+        End Function
+
     End Module
 
 End Namespace

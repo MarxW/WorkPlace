@@ -6,4 +6,15 @@ Partial Class Account_Login
         linkRegister.NavigateUrl = "Register.aspx?ReturnUrl=" + HttpUtility.UrlEncode(Request.QueryString("ReturnUrl"))
     End Sub
 
+    Protected Sub LoginUser_LoggedIn(ByVal sender As Object, ByVal e As System.EventArgs) Handles LoginUser.LoggedIn
+        Try
+            Dim login As Login = DirectCast(sender, Login)
+            Dim usersProfile As ProfileCommon = Profile.GetProfile(login.UserName)
+            If (usersProfile.projectID = Guid.Empty Or usersProfile.projectID.ToString = "") Then
+                Dim p As Workplace.Profile = Workplace.Profile.getProfileByID(Membership.GetUser(login.UserName).ProviderUserKey)
+                usersProfile.projectID = p.projectID
+            End If
+        Catch
+        End Try
+    End Sub
 End Class

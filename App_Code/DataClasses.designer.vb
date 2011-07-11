@@ -49,6 +49,12 @@ Partial Public Class DataClassesDataContext
     End Sub
   Partial Private Sub DeleteProfiles(instance As Profiles)
     End Sub
+  Partial Private Sub InsertTeams(instance As Teams)
+    End Sub
+  Partial Private Sub UpdateTeams(instance As Teams)
+    End Sub
+  Partial Private Sub DeleteTeams(instance As Teams)
+    End Sub
   #End Region
 	
 	Public Sub New()
@@ -91,6 +97,12 @@ Partial Public Class DataClassesDataContext
 	Public ReadOnly Property Profiles() As System.Data.Linq.Table(Of Profiles)
 		Get
 			Return Me.GetTable(Of Profiles)
+		End Get
+	End Property
+	
+	Public ReadOnly Property Teams() As System.Data.Linq.Table(Of Teams)
+		Get
+			Return Me.GetTable(Of Teams)
 		End Get
 	End Property
 End Class
@@ -940,6 +952,399 @@ Partial Public Class Profiles
 				Me._EndDate = value
 				Me.SendPropertyChanged("EndDate")
 				Me.OnEndDateChanged
+			End If
+		End Set
+	End Property
+	
+	Public Event PropertyChanging As PropertyChangingEventHandler Implements System.ComponentModel.INotifyPropertyChanging.PropertyChanging
+	
+	Public Event PropertyChanged As PropertyChangedEventHandler Implements System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+	
+	Protected Overridable Sub SendPropertyChanging()
+		If ((Me.PropertyChangingEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanging(Me, emptyChangingEventArgs)
+		End If
+	End Sub
+	
+	Protected Overridable Sub SendPropertyChanged(ByVal propertyName As [String])
+		If ((Me.PropertyChangedEvent Is Nothing)  _
+					= false) Then
+			RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
+		End If
+	End Sub
+End Class
+
+<Global.System.Data.Linq.Mapping.TableAttribute(Name:="dbo.Teams")>  _
+Partial Public Class Teams
+	Implements System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	
+	Private Shared emptyChangingEventArgs As PropertyChangingEventArgs = New PropertyChangingEventArgs(String.Empty)
+	
+	Private _teamID As System.Guid
+	
+	Private _projectID As System.Guid
+	
+	Private _TeamName As String
+	
+	Private _Street As String
+	
+	Private _Town As String
+	
+	Private _Zip As String
+	
+	Private _Phone As String
+	
+	Private _Patient_Firstname As String
+	
+	Private _Patient_LastName As String
+	
+	Private _Patient_Birthdate As System.Nullable(Of Date)
+	
+	Private _Patient_Medicare As String
+	
+	Private _HoursPerDay As System.Nullable(Of Decimal)
+	
+	Private _ContractStart As System.Nullable(Of Date)
+	
+	Private _ContractEnd As System.Nullable(Of Date)
+	
+	Private _Notes As String
+	
+	Private _Analysis As String
+	
+    #Region "Definitionen der Erweiterungsmethoden"
+    Partial Private Sub OnLoaded()
+    End Sub
+    Partial Private Sub OnValidate(action As System.Data.Linq.ChangeAction)
+    End Sub
+    Partial Private Sub OnCreated()
+    End Sub
+    Partial Private Sub OnteamIDChanging(value As System.Guid)
+    End Sub
+    Partial Private Sub OnteamIDChanged()
+    End Sub
+    Partial Private Sub OnprojectIDChanging(value As System.Guid)
+    End Sub
+    Partial Private Sub OnprojectIDChanged()
+    End Sub
+    Partial Private Sub OnTeamNameChanging(value As String)
+    End Sub
+    Partial Private Sub OnTeamNameChanged()
+    End Sub
+    Partial Private Sub OnStreetChanging(value As String)
+    End Sub
+    Partial Private Sub OnStreetChanged()
+    End Sub
+    Partial Private Sub OnTownChanging(value As String)
+    End Sub
+    Partial Private Sub OnTownChanged()
+    End Sub
+    Partial Private Sub OnZipChanging(value As String)
+    End Sub
+    Partial Private Sub OnZipChanged()
+    End Sub
+    Partial Private Sub OnPhoneChanging(value As String)
+    End Sub
+    Partial Private Sub OnPhoneChanged()
+    End Sub
+    Partial Private Sub OnPatient_FirstnameChanging(value As String)
+    End Sub
+    Partial Private Sub OnPatient_FirstnameChanged()
+    End Sub
+    Partial Private Sub OnPatient_LastNameChanging(value As String)
+    End Sub
+    Partial Private Sub OnPatient_LastNameChanged()
+    End Sub
+    Partial Private Sub OnPatient_BirthdateChanging(value As System.Nullable(Of Date))
+    End Sub
+    Partial Private Sub OnPatient_BirthdateChanged()
+    End Sub
+    Partial Private Sub OnPatient_MedicareChanging(value As String)
+    End Sub
+    Partial Private Sub OnPatient_MedicareChanged()
+    End Sub
+    Partial Private Sub OnHoursPerDayChanging(value As System.Nullable(Of Decimal))
+    End Sub
+    Partial Private Sub OnHoursPerDayChanged()
+    End Sub
+    Partial Private Sub OnContractStartChanging(value As System.Nullable(Of Date))
+    End Sub
+    Partial Private Sub OnContractStartChanged()
+    End Sub
+    Partial Private Sub OnContractEndChanging(value As System.Nullable(Of Date))
+    End Sub
+    Partial Private Sub OnContractEndChanged()
+    End Sub
+    Partial Private Sub OnNotesChanging(value As String)
+    End Sub
+    Partial Private Sub OnNotesChanged()
+    End Sub
+    Partial Private Sub OnAnalysisChanging(value As String)
+    End Sub
+    Partial Private Sub OnAnalysisChanged()
+    End Sub
+    #End Region
+	
+	Public Sub New()
+		MyBase.New
+		OnCreated
+	End Sub
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_teamID", DbType:="UniqueIdentifier NOT NULL", IsPrimaryKey:=true)>  _
+	Public Property teamID() As System.Guid
+		Get
+			Return Me._teamID
+		End Get
+		Set
+			If ((Me._teamID = value)  _
+						= false) Then
+				Me.OnteamIDChanging(value)
+				Me.SendPropertyChanging
+				Me._teamID = value
+				Me.SendPropertyChanged("teamID")
+				Me.OnteamIDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_projectID", DbType:="UniqueIdentifier NOT NULL")>  _
+	Public Property projectID() As System.Guid
+		Get
+			Return Me._projectID
+		End Get
+		Set
+			If ((Me._projectID = value)  _
+						= false) Then
+				Me.OnprojectIDChanging(value)
+				Me.SendPropertyChanging
+				Me._projectID = value
+				Me.SendPropertyChanged("projectID")
+				Me.OnprojectIDChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_TeamName", DbType:="NVarChar(250) NOT NULL", CanBeNull:=false)>  _
+	Public Property TeamName() As String
+		Get
+			Return Me._TeamName
+		End Get
+		Set
+			If (String.Equals(Me._TeamName, value) = false) Then
+				Me.OnTeamNameChanging(value)
+				Me.SendPropertyChanging
+				Me._TeamName = value
+				Me.SendPropertyChanged("TeamName")
+				Me.OnTeamNameChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Street", DbType:="NVarChar(150)")>  _
+	Public Property Street() As String
+		Get
+			Return Me._Street
+		End Get
+		Set
+			If (String.Equals(Me._Street, value) = false) Then
+				Me.OnStreetChanging(value)
+				Me.SendPropertyChanging
+				Me._Street = value
+				Me.SendPropertyChanged("Street")
+				Me.OnStreetChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Town", DbType:="NVarChar(150)")>  _
+	Public Property Town() As String
+		Get
+			Return Me._Town
+		End Get
+		Set
+			If (String.Equals(Me._Town, value) = false) Then
+				Me.OnTownChanging(value)
+				Me.SendPropertyChanging
+				Me._Town = value
+				Me.SendPropertyChanged("Town")
+				Me.OnTownChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Zip", DbType:="NVarChar(50)")>  _
+	Public Property Zip() As String
+		Get
+			Return Me._Zip
+		End Get
+		Set
+			If (String.Equals(Me._Zip, value) = false) Then
+				Me.OnZipChanging(value)
+				Me.SendPropertyChanging
+				Me._Zip = value
+				Me.SendPropertyChanged("Zip")
+				Me.OnZipChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Phone", DbType:="NVarChar(50)")>  _
+	Public Property Phone() As String
+		Get
+			Return Me._Phone
+		End Get
+		Set
+			If (String.Equals(Me._Phone, value) = false) Then
+				Me.OnPhoneChanging(value)
+				Me.SendPropertyChanging
+				Me._Phone = value
+				Me.SendPropertyChanged("Phone")
+				Me.OnPhoneChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Patient_Firstname", DbType:="NVarChar(150)")>  _
+	Public Property Patient_Firstname() As String
+		Get
+			Return Me._Patient_Firstname
+		End Get
+		Set
+			If (String.Equals(Me._Patient_Firstname, value) = false) Then
+				Me.OnPatient_FirstnameChanging(value)
+				Me.SendPropertyChanging
+				Me._Patient_Firstname = value
+				Me.SendPropertyChanged("Patient_Firstname")
+				Me.OnPatient_FirstnameChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Patient_LastName", DbType:="NVarChar(150)")>  _
+	Public Property Patient_LastName() As String
+		Get
+			Return Me._Patient_LastName
+		End Get
+		Set
+			If (String.Equals(Me._Patient_LastName, value) = false) Then
+				Me.OnPatient_LastNameChanging(value)
+				Me.SendPropertyChanging
+				Me._Patient_LastName = value
+				Me.SendPropertyChanged("Patient_LastName")
+				Me.OnPatient_LastNameChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Patient_Birthdate", DbType:="Date")>  _
+	Public Property Patient_Birthdate() As System.Nullable(Of Date)
+		Get
+			Return Me._Patient_Birthdate
+		End Get
+		Set
+			If (Me._Patient_Birthdate.Equals(value) = false) Then
+				Me.OnPatient_BirthdateChanging(value)
+				Me.SendPropertyChanging
+				Me._Patient_Birthdate = value
+				Me.SendPropertyChanged("Patient_Birthdate")
+				Me.OnPatient_BirthdateChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Patient_Medicare", DbType:="NVarChar(150)")>  _
+	Public Property Patient_Medicare() As String
+		Get
+			Return Me._Patient_Medicare
+		End Get
+		Set
+			If (String.Equals(Me._Patient_Medicare, value) = false) Then
+				Me.OnPatient_MedicareChanging(value)
+				Me.SendPropertyChanging
+				Me._Patient_Medicare = value
+				Me.SendPropertyChanged("Patient_Medicare")
+				Me.OnPatient_MedicareChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_HoursPerDay", DbType:="Decimal(18,2)")>  _
+	Public Property HoursPerDay() As System.Nullable(Of Decimal)
+		Get
+			Return Me._HoursPerDay
+		End Get
+		Set
+			If (Me._HoursPerDay.Equals(value) = false) Then
+				Me.OnHoursPerDayChanging(value)
+				Me.SendPropertyChanging
+				Me._HoursPerDay = value
+				Me.SendPropertyChanged("HoursPerDay")
+				Me.OnHoursPerDayChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ContractStart", DbType:="Date")>  _
+	Public Property ContractStart() As System.Nullable(Of Date)
+		Get
+			Return Me._ContractStart
+		End Get
+		Set
+			If (Me._ContractStart.Equals(value) = false) Then
+				Me.OnContractStartChanging(value)
+				Me.SendPropertyChanging
+				Me._ContractStart = value
+				Me.SendPropertyChanged("ContractStart")
+				Me.OnContractStartChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_ContractEnd", DbType:="Date")>  _
+	Public Property ContractEnd() As System.Nullable(Of Date)
+		Get
+			Return Me._ContractEnd
+		End Get
+		Set
+			If (Me._ContractEnd.Equals(value) = false) Then
+				Me.OnContractEndChanging(value)
+				Me.SendPropertyChanging
+				Me._ContractEnd = value
+				Me.SendPropertyChanged("ContractEnd")
+				Me.OnContractEndChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Notes", DbType:="Text", UpdateCheck:=UpdateCheck.Never)>  _
+	Public Property Notes() As String
+		Get
+			Return Me._Notes
+		End Get
+		Set
+			If (String.Equals(Me._Notes, value) = false) Then
+				Me.OnNotesChanging(value)
+				Me.SendPropertyChanging
+				Me._Notes = value
+				Me.SendPropertyChanged("Notes")
+				Me.OnNotesChanged
+			End If
+		End Set
+	End Property
+	
+	<Global.System.Data.Linq.Mapping.ColumnAttribute(Storage:="_Analysis", DbType:="NVarChar(250)")>  _
+	Public Property Analysis() As String
+		Get
+			Return Me._Analysis
+		End Get
+		Set
+			If (String.Equals(Me._Analysis, value) = false) Then
+				Me.OnAnalysisChanging(value)
+				Me.SendPropertyChanging
+				Me._Analysis = value
+				Me.SendPropertyChanged("Analysis")
+				Me.OnAnalysisChanged
 			End If
 		End Set
 	End Property

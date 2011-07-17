@@ -9,8 +9,8 @@ Partial Class Management_Teams
     End Sub
 
     Private Sub setupIntroductionText()
-        '        labelIntroduction.Text=String.Format(Me.GetLocalResourceObject("labelIntroduction.PreformatedText"), _
-        '                                             Workplace.Project.countAllProjects())
+        labelIntroduction.Text = String.Format(Me.GetLocalResourceObject("labelIntroduction.PreformatedText"), _
+                                             Workplace.Project.numberOfOpenTeams(Profile.projectID))
     End Sub
 
 End Class

@@ -269,7 +269,9 @@ Namespace Workplace
         ''' <returns></returns>
         ''' <remarks></remarks>
         Public Shared Function numberOfOpenTeams(ByVal p As Project) As Integer
-            Return 0
+            Dim currentLicence As Licence = Licence.getLicenceByID(p.licenceID)
+            Dim teams As List(Of Team) = Team.getAllTeamsByProjectID(p.projectID)
+            Return currentLicence.MaxTeams - teams.Count
         End Function
 
         ''' <summary>

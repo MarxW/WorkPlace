@@ -117,13 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ff" xml:space="preserve">
-    <value />
+  <data name="labelGridTitleTeamName.Text" xml:space="preserve">
+    <value>Team Name</value>
   </data>
   <data name="labelIntroduction.PreformatedText" xml:space="preserve">
     <value>Es können noch {0} Team(s) angelegt werden.</value>
   </data>
   <data name="PageTitle" xml:space="preserve">
     <value>Teams verwalten</value>
+  </data>
+  <data name="buttonAdd.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>Team Hinzufügen</value>
+  </data>
+  <data name="labelGridTitleHoursPerDay.Text" xml:space="preserve">
+    <value>Stunden</value>
+  </data>
+  <data name="labelGridTitlePatientFirstName.Text" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="labelGridTitlePatientLastName.Text" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="labelGridTitlePatientMedicare.Text" xml:space="preserve">
+    <value>Krankenkasse</value>
+  </data>
+  <data name="buttonAddTeam.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAddTeam.Text" xml:space="preserve">
+    <value>Team Speichern</value>
+  </data>
+  <data name="buttonAddTeamCancel.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonAddTeamCancel.Text" xml:space="preserve">
+    <value>Abbrechen</value>
+  </data>
+  <data name="labelAddFirstName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddFirstName.Text" xml:space="preserve">
+    <value>Patienten Vorname</value>
+  </data>
+  <data name="labelAddLastName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddLastName.Text" xml:space="preserve">
+    <value>Patienten Nachname</value>
+  </data>
+  <data name="labelAddTeamName.CssClass" xml:space="preserve">
+    <value>itemLabel</value>
+  </data>
+  <data name="labelAddTeamName.Text" xml:space="preserve">
+    <value>Team Name</value>
+  </data>
+  <data name="literalDialogTitle.Text" xml:space="preserve">
+    <value>Team hinzufügen</value>
+  </data>
+  <data name="requiredUserFirstName.ErrorMessage" xml:space="preserve">
+    <value>Patienten Vorname wird benötigt.</value>
+  </data>
+  <data name="requiredUserFirstName.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="requiredUserFirstName.ToolTip" xml:space="preserve">
+    <value>Patienten Vorname wird benötigt</value>
+  </data>
+  <data name="requiredUserLastName.ErrorMessage" xml:space="preserve">
+    <value>Patienten Nachname wird benötigt</value>
+  </data>
+  <data name="requiredUserLastName.Text" xml:space="preserve">
+    <value>*</value>
+  </data>
+  <data name="requiredUserLastName.ToolTip" xml:space="preserve">
+    <value>Patienten Nachname wird benötigt</value>
   </data>
 </root>

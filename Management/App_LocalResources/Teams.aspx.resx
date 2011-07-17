@@ -195,4 +195,19 @@
   <data name="requiredUserLastName.ToolTip" xml:space="preserve">
     <value>Patienten Nachname wird benötigt</value>
   </data>
+  <data name="buttonDelete.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonDelete.OnClientClick" xml:space="preserve">
+    <value>return confirm('Sind sie sicher das diese Team gelöscht werden soll?')</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="buttonEdit.CssClass" xml:space="preserve">
+    <value>aspButton</value>
+  </data>
+  <data name="buttonEdit.Text" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
 </root>

@@ -38,6 +38,31 @@
                     </tr>
                 </table>
             </HeaderTemplate>
+            <ItemTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="contentRow">
+                        <td width="190px">
+                            <asp:Button ID="buttonDelete" runat="server" CommandName="Delete" meta:resourcekey="buttonDelete" CausesValidation="False" />
+                            <asp:Button ID="buttonEdit" runat="server" CommandName="Edit" meta:resourcekey="buttonEdit" CausesValidation="False" />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridTeamName" Text='<%# Eval("TeamName") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientMedicare" Text='<%# Eval("Patient_Medicare") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientFirstName" Text='<%# Eval("Patient_Firstname") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientLastName" Text='<%# Eval("Patient_LastName") %>' />
+                        </td>
+                        <td  width="80px" style="text-align:right;">
+                            <asp:Label runat="server" ID="labelGridHoursPerDay" Text='<%# Eval("HoursPerDay") %>' />
+                        </td>
+                    </tr>
+                </table>
+            </ItemTemplate>
             <FooterTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="footerRow">

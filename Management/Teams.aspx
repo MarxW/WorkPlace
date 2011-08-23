@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <link href="../Styles/DataStyles.css" rel="stylesheet" type="text/css" />
+    <asp:Literal runat="server" ID="literalHead" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div style="margin:5px;">
@@ -63,6 +64,31 @@
                     </tr>
                 </table>
             </ItemTemplate>
+            <EditItemTemplate>
+                <table cellpadding="0" cellspacing="0">
+                    <tr class="contentRow">
+                        <td width="190px">
+                            <asp:Button ID="buttonDelete" runat="server" CommandName="Delete" meta:resourcekey="buttonDelete" CausesValidation="False" />
+                            <asp:Button ID="buttonEdit" runat="server" CommandName="Edit" meta:resourcekey="buttonEdit" CausesValidation="False" />
+                        </td>
+                        <td width="150px">
+                            <asp:TextBox runat="server" ID="labelGridTeamName" Text='<%# Eval("TeamName") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientMedicare" Text='<%# Eval("Patient_Medicare") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientFirstName" Text='<%# Eval("Patient_Firstname") %>' />
+                        </td>
+                        <td width="150px">
+                            <asp:Label runat="server" ID="labelGridPatientLastName" Text='<%# Eval("Patient_LastName") %>' />
+                        </td>
+                        <td  width="80px" style="text-align:right;">
+                            <asp:Label runat="server" ID="labelGridHoursPerDay" Text='<%# Eval("HoursPerDay") %>' />
+                        </td>
+                    </tr>
+                </table>
+            </EditItemTemplate>
             <FooterTemplate>
                 <table cellpadding="0" cellspacing="0">
                     <tr class="footerRow">
@@ -93,8 +119,8 @@
                 <span class="ui-icon ui-icon-closethick">close</span>
             </a>
         </div>
-        <div id="dialogModal" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; height: 380px;">
-            <table cellpadding="0" cellspacing="0">
+        <div id="dialogModal" class="ui-dialog-content ui-widget-content" style="width: auto; min-height: 0px; height: 180px;">
+            <table cellpadding="0" cellspacing="0" align="center">
                 <tr>
                     <td colspan="3">
                         <asp:label id="labelAddTeamName" meta:resourcekey="labelAddTeamName" runat="server" />
@@ -106,20 +132,30 @@
                     <td>
                         <asp:label id="labelAddFirstName" meta:resourcekey="labelAddFirstName" runat="server" />
                         <asp:TextBox Width="140px" ID="textboxAddFirstName" CssClass="addTeamForm" runat="server" Text="" />
-                        <asp:RequiredFieldValidator ID="requiredUserFirstName" meta:resourcekey="requiredUserFirstName" runat="server" ControlToValidate="textboxAddFirstName" CssClass="error" ValidationGroup="addTeamValidationGroup" />
+                        <asp:RequiredFieldValidator ID="requiredTeamFirstName" meta:resourcekey="requiredTeamFirstName" runat="server" ControlToValidate="textboxAddFirstName" CssClass="error" ValidationGroup="addTeamValidationGroup" />
                     </td>
                     <td style="width: 10px;"></td>
                     <td>
                         <asp:label id="labelAddLastName" meta:resourcekey="labelAddLastName" runat="server" />
                         <asp:TextBox Width="140px" ID="textboxAddLastName" CssClass="addTeamForm" runat="server" Text="" />
-                        <asp:RequiredFieldValidator ID="requiredUserLastName" meta:resourcekey="requiredUserLastName" runat="server" ControlToValidate="textboxAddLastName" CssClass="error" ValidationGroup="addTeamValidationGroup" />
+                        <asp:RequiredFieldValidator ID="requiredTeamLastName" meta:resourcekey="requiredTeamLastName" runat="server" ControlToValidate="textboxAddLastName" CssClass="error" ValidationGroup="addTeamValidationGroup" />
                     </td>
                 </tr>
-                
+                <tr style="height:5px;">
+                    <td colspan="3"></td>
+                </tr>
                 <tr>
                     <td colspan="3" >
-                        <asp:Button ID="buttonAddTeam" ValidationGroup="addUserValidationGroup" meta:resourcekey="buttonAddTeam" runat="server" />
+                        <asp:Button ID="buttonAddTeam" ValidationGroup="addTeamValidationGroup" meta:resourcekey="buttonAddTeam" runat="server" />
                         <asp:Button ID="buttonAddTeamCancel" meta:resourcekey="buttonAddTeamCancel" runat="server" OnClientClick="cancelAddTeam();return false;" />
+                    </td>
+                </tr>
+                <tr style="height:5px;">
+                    <td colspan="3"></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align:center;">
+                        <asp:Label runat="server" ID="labelAddError" CssClass="error" />
                     </td>
                 </tr>
             </table>

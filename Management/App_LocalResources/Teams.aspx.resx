@@ -177,22 +177,22 @@
   <data name="literalDialogTitle.Text" xml:space="preserve">
     <value>Team hinzufügen</value>
   </data>
-  <data name="requiredUserFirstName.ErrorMessage" xml:space="preserve">
+  <data name="requiredTeamFirstName.ErrorMessage" xml:space="preserve">
     <value>Patienten Vorname wird benötigt.</value>
   </data>
-  <data name="requiredUserFirstName.Text" xml:space="preserve">
+  <data name="requiredTeamFirstName.Text" xml:space="preserve">
     <value>*</value>
   </data>
-  <data name="requiredUserFirstName.ToolTip" xml:space="preserve">
-    <value>Patienten Vorname wird benötigt</value>
+  <data name="requiredTeamName.Text" xml:space="preserve">
+    <value>*</value>
   </data>
-  <data name="requiredUserLastName.ErrorMessage" xml:space="preserve">
+  <data name="requiredTeamName.ErrorMessage" xml:space="preserve">
     <value>Patienten Nachname wird benötigt</value>
   </data>
-  <data name="requiredUserLastName.Text" xml:space="preserve">
+  <data name="requiredTeamLastName.Text" xml:space="preserve">
     <value>*</value>
   </data>
-  <data name="requiredUserLastName.ToolTip" xml:space="preserve">
+  <data name="requiredTeamLastName.ErrorMessage" xml:space="preserve">
     <value>Patienten Nachname wird benötigt</value>
   </data>
   <data name="buttonDelete.CssClass" xml:space="preserve">
